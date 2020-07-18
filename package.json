@@ -1,0 +1,17 @@
+{
+  "name": "kobeforever24",
+  "version": "1.0.0",
+  "author": "reco_luan",
+  "scripts": {
+    "dev": "vuepress dev .",
+    "build": "vuepress build ."
+  },
+  "devDependencies": {
+    "vuepress": "1.5.0",
+    "vuepress-theme-reco": "1.5.3"
+  },
+  "dependencies": {
+    "vue-class-component": "^7.2.3"
+  },
+  "description": "愿你走出半生 归来仍是少年"
+}
