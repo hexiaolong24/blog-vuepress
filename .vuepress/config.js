@@ -8,7 +8,7 @@ module.exports = {
       "link",
       {
         "rel": "icon",
-        "href": "/blog/logo.jpeg"
+        "href": "/logo.jpeg"
       }
     ],
     [
@@ -19,7 +19,6 @@ module.exports = {
       }
     ]
   ],
-  "base": "/blog/",
   "theme": "reco",
   "themeConfig": {
     "huawei": "true",
@@ -101,7 +100,10 @@ module.exports = {
     "author": "hexiaolong",
     "authorAvatar": "/hxl.png",
     // 备案信息
-    // "record": "xxxx",
+    "record": "冀ICP备20017673号",
+    'recordLink': 'http://beian.miit.gov.cn',
+    // 'cyberSecurityRecord': '公安部备案文案',
+    // 'cyberSecurityLink': '公安部备案指向链接',
     "startYear": "2020"
   },
   "markdown": {
