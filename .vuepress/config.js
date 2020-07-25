@@ -2,6 +2,7 @@ module.exports = {
   "title": "8_KOBE_24",
   "description": "愿你走出半生 归来仍是少年",
   "dest": "public",
+  "base": "/kobe/",
   "head": [
     // 网页标识
     [
