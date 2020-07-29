@@ -20,8 +20,20 @@ module.exports = {
       }
     ]
   ],
+  "locales": {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   "theme": "reco",
   "themeConfig": {
+    // valine评论
+    valineConfig: {
+      appId: 'NvNLcDsFp4OekaohkeVwbIbm-gzGzoHsz',
+      appKey: 'puFhsoRl62xe8dRVGTTx5Wlt',
+      showComment: false,
+      placeholder: '雁过留痕，大佬来唠两块钱的啊~'
+    },
     "huawei": "true",
     "nav": [
       {
@@ -39,8 +51,22 @@ module.exports = {
         "icon": "reco-coding",
         "items": [
           {
-            "text": "vuepress-reco",
-            "link": "/docs/theme-reco/"
+            "text": "Kobe Bryant",
+            "link": "/docs/kobe/",
+            "items": [
+              {
+                "text": "辉煌生涯",
+                "link": "/docs/kobe/record/"
+              },
+              {
+                "text": "球鞋",
+                "link": "/docs/kobe/shoes/"
+              }
+            ]
+          },
+          {
+            "text": "2020的幸福生活",
+            "link": "/docs/2020life/",
           }
         ]
       },
@@ -57,14 +83,17 @@ module.exports = {
       }
     ],
     // 侧边栏
-    // "sidebar": {
-    //   "/docs/theme-reco/": [
-    //     "",
-    //     "theme",
-    //     "plugin",
-    //     "api"
-    //   ]
-    // },
+    "sidebar": {
+      "/docs/kobe/record/": [
+        ['生涯记录', '生涯记录'],
+        "职业荣誉",
+      ],
+      "/docs/kobe/shoes/": [
+        "大师之路",
+        "Fade to Black",
+        "undefeated x kobe4"
+      ]
+    },
     "type": "blog",
     "blogConfig": {
     // 分类
@@ -103,7 +132,7 @@ module.exports = {
     // 备案信息
     "record": "冀ICP备20017673号",
     'recordLink': 'http://beian.miit.gov.cn',
-    // 'cyberSecurityRecord': '公安部备案文案',
+    // 'cyberSecurityRecord': '公安备20017673号',
     // 'cyberSecurityLink': '公安部备案指向链接',
     "startYear": "2020"
   },
