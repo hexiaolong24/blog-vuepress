@@ -9,7 +9,7 @@ heroText: null
 #   background: '#fff',
 #   height: '100%'
 # }
-bgImage: '/kobelang.jpeg'
+bgImage: 'https://coolcdn.igetcool.com/p/2020/7/35a74ca331619e28fd80c22cf06b7a5b.jpeg?_2200x732.jpeg'
 bgImageStyle: {
   height: '500px'
 }

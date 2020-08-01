@@ -20,11 +20,6 @@ module.exports = {
       }
     ]
   ],
-  "locales": {
-    '/': {
-      lang: 'zh-CN'
-    }
-  },
   "theme": "reco",
   "themeConfig": {
     // valine评论
@@ -123,12 +118,12 @@ module.exports = {
       }
     ],
     // 左侧头像
-    "logo": "/logo.jpeg",
+    "logo": "https://coolcdn.igetcool.com/p/2020/7/4702368ebda7baa5239e6fd8ad0fb3e3.jpeg?_690x690.jpeg",
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
     "author": "hexiaolong",
-    "authorAvatar": "/hxl.png",
+    "authorAvatar": "https://coolcdn.igetcool.com/p/2020/7/706f0ce8fd421471429b7a5a0d66e3f5.png?_294x270.png",
     // 备案信息
     "record": "冀ICP备20017673号",
     'recordLink': 'http://beian.miit.gov.cn',
