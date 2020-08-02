@@ -60,8 +60,12 @@ module.exports = {
             ]
           },
           {
-            "text": "2020的幸福生活",
-            "link": "/docs/2020life/",
+            "text": "愿我如星君如月",
+            "link": "/docs/chaoliu/",
+          },
+          {
+            "text": "夜夜流光相皎洁",
+            "link": "/docs/offwhite/",
           }
         ]
       },
@@ -80,7 +84,7 @@ module.exports = {
     // 侧边栏
     "sidebar": {
       "/docs/kobe/record/": [
-        ['生涯记录', '生涯记录'],
+        '',
         "职业荣誉",
       ],
       "/docs/kobe/shoes/": [
