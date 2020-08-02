@@ -85,7 +85,8 @@ module.exports = {
       ],
       "/docs/kobe/shoes/": [
         '',
-        "大师之路",
+        "大师之路_上",
+        "大师之路_下",
         "Fade to Black",
         "undefeated x kobe4"
       ]
