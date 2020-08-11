@@ -37,7 +37,7 @@ module.exports = {
         "icon": "reco-home"
       },
       {
-        "text": "时间轴",
+        "text": "逝水流年",
         "link": "/timeline/",
         "icon": "reco-date"
       },
@@ -60,13 +60,17 @@ module.exports = {
             ]
           },
           {
+            "text": "此心安处是吾乡",
+            "link": "/docs/home/",
+          },
+          {
             "text": "愿我如星君如月",
             "link": "/docs/chaoliu/",
           },
           {
             "text": "夜夜流光相皎洁",
             "link": "/docs/offwhite/",
-          }
+          },
         ]
       },
       {
@@ -93,7 +97,11 @@ module.exports = {
         "大师之路_下",
         "Fade to Black",
         "undefeated x kobe4"
-      ]
+      ],
+      "/docs/home/": [
+        '',
+        ['2020-08-09', '2020-08-09']
+      ],
     },
     "type": "blog",
     "blogConfig": {
@@ -133,7 +141,7 @@ module.exports = {
     // 备案信息
     "record": "冀ICP备20017673号",
     'recordLink': 'http://beian.miit.gov.cn',
-    // 'cyberSecurityRecord': '公安备20017673号',
+    'cyberSecurityRecord': '冀公网安备 13072602000042号',
     // 'cyberSecurityLink': '公安部备案指向链接',
     "startYear": "2020"
   },
