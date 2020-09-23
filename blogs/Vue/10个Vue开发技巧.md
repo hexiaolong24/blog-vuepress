@@ -3,7 +3,7 @@ title: 10个Vue开发技巧
 date: 2019-08-31
 sidebar: 'auto'
 categories:
- - Vue
+ - Vue.js
 tags:
  - Vue
  - 前端
