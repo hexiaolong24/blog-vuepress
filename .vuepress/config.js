@@ -102,6 +102,13 @@ module.exports = {
         '',
         ['2020-08-09', '2020-08-09']
       ],
+      "/docs/offwhite/": [
+        '',
+        // 文件名, 标题
+        ['reactEcharts', '乔二'],
+        ['vueEcharts', '乔三'],
+        ['年度报告', '乔四']
+      ],
     },
     "type": "blog",
     "blogConfig": {
