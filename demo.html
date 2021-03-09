@@ -7,20 +7,11 @@
 </head>
 <body>
   <script>
-    let p = new Promise((resolve, reject) => {
-      reject('err');
-    })
-    
-    p.catch(() => {
-      setTimeout(() => {
-        console.log(2)
-      },1000)
-    })
-    
-    p.catch(() => {
-      console.log(1)
-    })
-    
+  let a = function(b) {
+    b.toString();
+  }
+    console.log(a([1]))
+
   </script>
 </body>
 </html>
