@@ -7,11 +7,12 @@
 </head>
 <body>
   <script>
-  let a = function(b) {
-    b.toString();
-  }
-    console.log(a([1]))
 
+let unique5 = arr => arr.reduce((acc, cur) => {
+  !acc.includes(cur) && acc.push(cur)  
+  return acc
+},[])
+console.log(unique5([1,2,2,3,1,2]))
   </script>
 </body>
 </html>
