@@ -114,7 +114,7 @@ function MyComponent() {
   }
   //设置参数默认值
   static defaultProps = {
-      age : 18
+      age: 18
   }
   ```
 
@@ -248,7 +248,7 @@ function MyComponent() {
    Pubsub.publish("msg",data)
    //解绑
    Pubsub.unsubscribe(this.token)
-   Pubsub.unsubscribe("msg")
+   Pubsub.("msg")
    Pubsub.clearAllsubscriptions()
    ```
 
@@ -552,7 +552,7 @@ const path = this.props.location.pathname//当前浏览器的路由地址
 
     ```JS
     import {combineReducers} from "redux"
-    export default combineReducers({AReducer,AReducer})
+    export default combineReducers({AReducer,BReducer})
     ```
 
 - action
