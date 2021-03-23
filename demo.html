@@ -7,13 +7,23 @@
 </head>
 <body>
   <script>
-    console.log(a)
-    var a = 1
-
-    function a () {
-
+    let str = 'https://www.baidu.com/s?ie=UTF-8&wd=frontend'
+    let arr = str.split('?')
+    console.log(
+      arr
+    )
+    let a = new URLSearchParams(arr[1])
+    for (const item of a) {
+      console.log(item)
+      
     }
-    console.log(a)
+	// let link = document.createElement("a");
+	// link.href = str;
+	// let askText = link.search.substring(1)
+  // console.log('askText',askText)
+		// polText = link.hash.substr(1),
+		// obj = {};
+
   </script>
 </body>
 </html>

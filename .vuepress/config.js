@@ -73,17 +73,17 @@ module.exports = {
           },
         ]
       },
-      {
-        "text": "Contact",
-        "icon": "reco-message",
-        "items": [
-          {
-            "text": "GitHub",
-            "link": "https://github.com/hexiaolong24",
-            "icon": "reco-github"
-          }
-        ]
-      }
+      // {
+      //   "text": "Contact",
+      //   "icon": "reco-message",
+      //   "items": [
+      //     {
+      //       "text": "GitHub",
+      //       "link": "https://github.com/hexiaolong24",
+      //       "icon": "reco-github"
+      //     }
+      //   ]
+      // }
     ],
     // 侧边栏
     "sidebar": {
