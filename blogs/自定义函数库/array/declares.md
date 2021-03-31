@@ -48,6 +48,27 @@ export function reduce(arr, callback, initValue){
     return result;
 }
 
+Array.prototype.myReduce = function(callback,initval) {
+  if(callback instanceof Function) {
+    let arr = this;
+    let result = []
+    if(initval) {
+      result = initval;
+      for(let i = 0; i< arr.length; i++) {
+        result = callback(result,arr[i],arr)
+      }
+    }else {
+      result = arr[0];
+      for(let i = 1; i< arr.length; i++) {
+        result = callback(result,arr[i],arr)
+      }
+    }
+    return result
+  }else {
+    throw new Error(`${callback} is not a function`)
+  }
+}
+
 /**
  * 
  * @param {Array} arr 
@@ -135,12 +156,12 @@ export function every(arr, callback){
 export function some(arr, callback){
     //遍历数组
     for(let i=0;i<arr.length;i++){
-        // 执行回调 如果回调执行返回结果为 false
+        // 执行回调 如果有执行结果为true的则返回
         if(callback(arr[i], i)){
             return true;
         }
     }
-    //如果都满足条件则返回 true
+    // 如果没有满足条件的返回false
     return false;
 }
 ```

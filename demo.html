@@ -7,23 +7,21 @@
 </head>
 <body>
   <script>
-    let str = 'https://www.baidu.com/s?ie=UTF-8&wd=frontend'
-    let arr = str.split('?')
-    console.log(
-      arr
-    )
-    let a = new URLSearchParams(arr[1])
-    for (const item of a) {
-      console.log(item)
-      
-    }
-	// let link = document.createElement("a");
-	// link.href = str;
-	// let askText = link.search.substring(1)
-  // console.log('askText',askText)
-		// polText = link.hash.substr(1),
-		// obj = {};
+    debugger
 
-  </script>
+    let p1 = setTimeout(() => {
+      return Promise.reject(10)
+    },5000)
+    let p2 = setTimeout(() => {
+      return Promise.resolve(2)
+    },0)
+    Promise.race([p1, p2]).then((val) => {
+      console.log(val)
+    },(err) => {
+      console.log('err', err)
+    })
+    console.log(p1,p2)
+    
+   </script>
 </body>
 </html>

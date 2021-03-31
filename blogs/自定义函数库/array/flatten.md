@@ -31,11 +31,16 @@ function flatten1(arr) {
 }
 
 function flatten2(arr) {
-  let result = [...arr];
+  let result = [].concat[...arr];
   while (result.some(item => Array.isArray(item))) {
     result = [].concat(...result)
   }
   return result;
 }
 
+Array.prototype.flatten3 = function() {
+  return this.reduce((pre,cur) => {
+    return pre.concat(Array.isArray(cur) ? cur.flatten3() : cur)
+  },[])
+}
 ```
