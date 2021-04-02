@@ -7,20 +7,12 @@
 </head>
 <body>
   <script>
-    debugger
-
-    let p1 = setTimeout(() => {
-      return Promise.reject(10)
-    },5000)
-    let p2 = setTimeout(() => {
-      return Promise.resolve(2)
-    },0)
-    Promise.race([p1, p2]).then((val) => {
-      console.log(val)
-    },(err) => {
-      console.log('err', err)
-    })
-    console.log(p1,p2)
+    (() => {
+      localStorage.aaa = 1  
+      localStorage.setItem('bbb',1)
+      console.log(localStorage.aaa)
+    })()
+    
     
    </script>
 </body>
