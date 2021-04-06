@@ -72,7 +72,7 @@ module.exports = {
             "link": "/docs/offwhite/",
           },
         ]
-      },
+      }
       // {
       //   "text": "Contact",
       //   "icon": "reco-message",
