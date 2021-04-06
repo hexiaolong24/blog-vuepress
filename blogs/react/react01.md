@@ -552,7 +552,7 @@ const path = this.props.location.pathname//当前浏览器的路由地址
 
     ```JS
     import {combineReducers} from "redux"
-    export default combineReducers({AReducer,BReducer})
+    export default combineReducers({AReducer,AReducer})
     ```
 
 - action
