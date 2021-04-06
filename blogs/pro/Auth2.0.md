@@ -3,7 +3,7 @@ title: Auth2.0
 date: 2019-10-12
 sidebar: 'auto'
 categories:
- - projects
+ - pro
 isShowComments: false
 ---
 
@@ -175,7 +175,7 @@ methods: {
 
 ##  jenkins部署egg项目
 
-```shell
+```
 #!/bin/sh
 
 # 查询有没有9101的端口的进程，如果有返回1，如果没有返回0
@@ -207,7 +207,7 @@ echo "==========================="
 
 - pm2进程守护
 
-```shell
+```
 # run.sh
 id=$(pm2 list | grep dev-gateway | awk '{print $2}')
 if [ "$id" == "" ];

@@ -3,7 +3,7 @@ title: shuffle
 date: 2019-08-28
 sidebar: 'auto'
 categories:
- - 自定义函数库
+ - Function
 tags:
  - 自定义函数库
  - array
@@ -17,7 +17,7 @@ arr.sort(() => Math.random() - 0.5)
 
 ```js
 // Fisher–Yates shuffle
-Array.prototype.shuffle = function() {
+Array.prototype.myShuffle = function() {
   let array = this;
   let m = array.length,
     t, i;

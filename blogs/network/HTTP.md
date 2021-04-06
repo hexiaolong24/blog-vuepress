@@ -46,6 +46,7 @@ isShowComments: false
 ##  http/0.9
 HTTP 是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 最早版本是1991年发布的0.9版。该版本极其简单，只有一个命令GET。
+
 ```js
 // 协议规定，服务器只能回应HTML格式的字符串，不能回应别的格式
 GET /index.html
@@ -179,7 +180,7 @@ HTTPs耗时 = TCP握手 + SSL握手
 
 命令行工具curl有一个w参数，可以用来测量TCP握手和SSL握手的具体耗时，以访问支付宝为例。
 
-```shell
+```
 $ curl -w "TCP handshake: %{time_connect}, SSL handshake: %{time_appconnect}\n" -so /dev/null https://www.alipay.com
 
 TCP handshake: 0.022, SSL handshake: 0.064

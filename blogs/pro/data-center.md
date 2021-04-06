@@ -3,7 +3,7 @@ title: data-center
 date: 2019-10-12
 sidebar: 'auto'
 categories:
- - projects
+ - pro
 isShowComments: false
 ---
 

@@ -72,18 +72,18 @@ module.exports = {
             "link": "/docs/offwhite/",
           },
         ]
+      },
+      {
+        "text": "Contact",
+        "icon": "reco-message",
+        "items": [
+          {
+            "text": "GitHub",
+            "link": "https://github.com/hexiaolong24",
+            "icon": "reco-github"
+          }
+        ]
       }
-      // {
-      //   "text": "Contact",
-      //   "icon": "reco-message",
-      //   "items": [
-      //     {
-      //       "text": "GitHub",
-      //       "link": "https://github.com/hexiaolong24",
-      //       "icon": "reco-github"
-      //     }
-      //   ]
-      // }
     ],
     // 侧边栏
     "sidebar": {
@@ -139,12 +139,12 @@ module.exports = {
       }
     ],
     // 左侧头像
-    "logo": "https://coolcdn.igetcool.com/p/2020/7/4702368ebda7baa5239e6fd8ad0fb3e3.jpeg?_690x690.jpeg",
+    "logo": "/logo.jpeg",
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
     "author": "hexiaolong",
-    "authorAvatar": "https://coolcdn.igetcool.com/p/2020/7/706f0ce8fd421471429b7a5a0d66e3f5.png?_294x270.png",
+    "authorAvatar": "/hxl.png",
     // 备案信息
     "record": "冀ICP备20017673号",
     'recordLink': 'http://beian.miit.gov.cn',

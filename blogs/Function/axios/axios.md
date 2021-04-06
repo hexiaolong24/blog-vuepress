@@ -3,7 +3,7 @@ title: axios
 date: 2019-08-28
 sidebar: 'auto'
 categories:
- - 自定义函数库
+ - Function
 tags:
  - 自定义函数库
  - axios

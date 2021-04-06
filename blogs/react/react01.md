@@ -248,7 +248,7 @@ function MyComponent() {
    Pubsub.publish("msg",data)
    //解绑
    Pubsub.unsubscribe(this.token)
-   Pubsub.("msg")
+   Pubsub.unsubscribe("msg")
    Pubsub.clearAllsubscriptions()
    ```
 
