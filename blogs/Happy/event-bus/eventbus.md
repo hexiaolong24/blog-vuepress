@@ -3,9 +3,9 @@ title: event-bus实现
 date: 2019-09-12
 sidebar: auto
 categories:
-- JavaScript
+- Happy
 tags:
-- JavaScript
+- 自定义函数库
 - 前端
 ---
 
