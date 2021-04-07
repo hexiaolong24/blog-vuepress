@@ -49,7 +49,7 @@ HTTP 是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet�
 
 ```js
 // 协议规定，服务器只能回应HTML格式的字符串，不能回应别的格式
-GET /index.html
+// GET /index.html
 ```
 
 ## http/1.0
@@ -67,7 +67,7 @@ TCP连接的新建成本很高，因为需要客户端和服务器三次握手�
 为了解决这个问题，有些浏览器在请求时，用了一个非标准的Connection字段。
 
 ```js
-Connection: keep-alive
+// Connection: keep-alive
 ```
 这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。
 
@@ -82,7 +82,7 @@ Connection: keep-alive
 客户端和服务器发现对方一段时间没有活动，就可以主动关闭连接。不过，规范的做法是，客户端在最后一个请求时，发送Connection: close，明确要求服务器关闭TCP连接。
 
 ```js
-Connection: close
+// Connection: close
 ```
 目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。
 
@@ -94,7 +94,7 @@ Connection: close
 3.  Content-Length 字段
 一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。
 ```js
-Content-Length: 3495
+// Content-Length: 3495
 ```
 上面代码告诉浏览器，本次回应的长度是3495个字节，后面的字节就属于下一个回应了。
 
@@ -108,7 +108,7 @@ Content-Length: 3495
 因此，1.1版规定可以不使用Content-Length字段，而使用"分块传输编码"（chunked transfer encoding）。只要请求或回应的头信息有Transfer-Encoding字段，就表明回应将由数量未定的数据块组成。
 
 ```js
-Transfer-Encoding: chunked
+// Transfer-Encoding: chunked
 ```
 每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了
 
@@ -180,10 +180,10 @@ HTTPs耗时 = TCP握手 + SSL握手
 
 命令行工具curl有一个w参数，可以用来测量TCP握手和SSL握手的具体耗时，以访问支付宝为例。
 
-```
-$ curl -w "TCP handshake: %{time_connect}, SSL handshake: %{time_appconnect}\n" -so /dev/null https://www.alipay.com
+```js
+// $ curl -w "TCP handshake: %{time_connect}, SSL handshake: %{time_appconnect}\n" -so /dev/null https://www.alipay.com
 
-TCP handshake: 0.022, SSL handshake: 0.064
+// TCP handshake: 0.022, SSL handshake: 0.064
 ```
 
 从运行结果可以看到，SSL握手的耗时（64毫秒）大概是TCP握手（22毫秒）的三倍。也就是说，在建立连接的阶段，HTTPs链接比HTTP链接要长3倍的时间，具体数字取决于CPU的快慢和网络状况。
