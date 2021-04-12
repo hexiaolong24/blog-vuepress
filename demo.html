@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function Person(name) {
+    this.name = name
+  }
+  function _new(fn, ...args) {
+    // 实例对象的隐式对象为函数的原型对象
+    let obj = Object.create(fn.prototype)
+    // 将函数的this指向实例调用对象 并调用对象
+    let res = fn.call(obj,...args)
+    return res instanceof Object ? res : obj
+    // 如果函数本身不返回object，则返回实例对象
+  }
+  tom = _new(Person, 'tom')
+  console.log('=========start=============')
+  console.log('tom', tom);
+  console.log('=========end===============')
+  
+</script>
+</body>
+</html>
