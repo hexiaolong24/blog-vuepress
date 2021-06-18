@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Promise | 8_KOBE_24</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/logo.jpeg">
+    <meta name="description" content="愿你走出半生 归来仍是少年">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/assets/css/0.styles.bfc5d3a4.css" as="style"><link rel="preload" href="/assets/js/app.1cf7dfac.js" as="script"><link rel="preload" href="/assets/js/3.f4fb3d7b.js" as="script"><link rel="preload" href="/assets/js/1.3aa5e91a.js" as="script"><link rel="preload" href="/assets/js/34.7a86e974.js" as="script"><link rel="prefetch" href="/assets/js/10.fcffca06.js"><link rel="prefetch" href="/assets/js/11.61138578.js"><link rel="prefetch" href="/assets/js/12.3e888d92.js"><link rel="prefetch" href="/assets/js/13.d4ad8b10.js"><link rel="prefetch" href="/assets/js/14.d5723f16.js"><link rel="prefetch" href="/assets/js/15.531ccdbc.js"><link rel="prefetch" href="/assets/js/16.157944be.js"><link rel="prefetch" href="/assets/js/17.1226ec6b.js"><link rel="prefetch" href="/assets/js/18.1cea280e.js"><link rel="prefetch" href="/assets/js/19.b2523bf2.js"><link rel="prefetch" href="/assets/js/20.f009eb16.js"><link rel="prefetch" href="/assets/js/21.daac1cc8.js"><link rel="prefetch" href="/assets/js/22.3656f6fc.js"><link rel="prefetch" href="/assets/js/23.73e9c445.js"><link rel="prefetch" href="/assets/js/24.05cad245.js"><link rel="prefetch" href="/assets/js/25.ff1c0d24.js"><link rel="prefetch" href="/assets/js/26.9781fad2.js"><link rel="prefetch" href="/assets/js/27.2a0e2b58.js"><link rel="prefetch" href="/assets/js/28.93f516a7.js"><link rel="prefetch" href="/assets/js/29.1146e8df.js"><link rel="prefetch" href="/assets/js/30.9aa95942.js"><link rel="prefetch" href="/assets/js/31.d44dc315.js"><link rel="prefetch" href="/assets/js/32.ae92aef7.js"><link rel="prefetch" href="/assets/js/33.5be8a872.js"><link rel="prefetch" href="/assets/js/35.ab3202a3.js"><link rel="prefetch" href="/assets/js/36.8865a8bf.js"><link rel="prefetch" href="/assets/js/37.460e71a3.js"><link rel="prefetch" href="/assets/js/38.4f835cf5.js"><link rel="prefetch" href="/assets/js/39.daf467a9.js"><link rel="prefetch" href="/assets/js/4.72038e90.js"><link rel="prefetch" href="/assets/js/40.d9d30a89.js"><link rel="prefetch" href="/assets/js/41.ff910c42.js"><link rel="prefetch" href="/assets/js/42.33aaf0ed.js"><link rel="prefetch" href="/assets/js/43.3d2deb44.js"><link rel="prefetch" href="/assets/js/44.8ebdde94.js"><link rel="prefetch" href="/assets/js/45.2c5e798a.js"><link rel="prefetch" href="/assets/js/46.ea5211ce.js"><link rel="prefetch" href="/assets/js/47.944e7b46.js"><link rel="prefetch" href="/assets/js/48.cc935dc4.js"><link rel="prefetch" href="/assets/js/49.a8f88b68.js"><link rel="prefetch" href="/assets/js/5.737f605f.js"><link rel="prefetch" href="/assets/js/50.2e9ab8ec.js"><link rel="prefetch" href="/assets/js/51.5d473f04.js"><link rel="prefetch" href="/assets/js/52.cc64b79e.js"><link rel="prefetch" href="/assets/js/53.a08e96d8.js"><link rel="prefetch" href="/assets/js/54.f413c85d.js"><link rel="prefetch" href="/assets/js/55.9fd344e1.js"><link rel="prefetch" href="/assets/js/56.91968754.js"><link rel="prefetch" href="/assets/js/57.653d7c8d.js"><link rel="prefetch" href="/assets/js/58.643b8e03.js"><link rel="prefetch" href="/assets/js/59.f0e853b1.js"><link rel="prefetch" href="/assets/js/6.5d7ff82c.js"><link rel="prefetch" href="/assets/js/60.eeae0424.js"><link rel="prefetch" href="/assets/js/61.0e2aa74f.js"><link rel="prefetch" href="/assets/js/62.e7ca5fff.js"><link rel="prefetch" href="/assets/js/63.878e5005.js"><link rel="prefetch" href="/assets/js/64.5f416ccd.js"><link rel="prefetch" href="/assets/js/65.3f99d282.js"><link rel="prefetch" href="/assets/js/66.cb87b199.js"><link rel="prefetch" href="/assets/js/67.92d947a9.js"><link rel="prefetch" href="/assets/js/68.e47312f7.js"><link rel="prefetch" href="/assets/js/69.7f33d89a.js"><link rel="prefetch" href="/assets/js/7.5b3bf9ae.js"><link rel="prefetch" href="/assets/js/70.de156ce4.js"><link rel="prefetch" href="/assets/js/71.556b3d18.js"><link rel="prefetch" href="/assets/js/72.886aabdd.js"><link rel="prefetch" href="/assets/js/73.392d4771.js"><link rel="prefetch" href="/assets/js/74.0d8b363c.js"><link rel="prefetch" href="/assets/js/75.128d1a24.js"><link rel="prefetch" href="/assets/js/76.e6ed6931.js"><link rel="prefetch" href="/assets/js/77.b8470665.js"><link rel="prefetch" href="/assets/js/78.37412e41.js"><link rel="prefetch" href="/assets/js/79.63dc52a9.js"><link rel="prefetch" href="/assets/js/8.afb0abf3.js"><link rel="prefetch" href="/assets/js/80.c98aacb3.js"><link rel="prefetch" href="/assets/js/81.6af83755.js"><link rel="prefetch" href="/assets/js/82.04be33b9.js"><link rel="prefetch" href="/assets/js/83.25933a1e.js"><link rel="prefetch" href="/assets/js/9.230b9328.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bfc5d3a4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-dad8a512><div data-v-dad8a512><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-dad8a512 data-v-dad8a512><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-dad8a512 data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>8_KOBE_24</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>hexiaolong</span>
+            
+          <span data-v-64685f0e>2020 - </span>
+          2021
+        </a></span></div></div> <div class="hide" data-v-dad8a512><header class="navbar" data-v-dad8a512><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpeg" alt="8_KOBE_24" class="logo"> <span class="site-name">8_KOBE_24</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  KOBE
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      前端总结
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/CSS/" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Happy/" class="nav-link"><i class="iconfont undefined"></i>
+  Happy
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="iconfont undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/nginx/" class="nav-link"><i class="iconfont undefined"></i>
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Vue.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/electron/" class="nav-link"><i class="iconfont undefined"></i>
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/categories/network/" class="nav-link"><i class="iconfont undefined"></i>
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/nw/" class="nav-link"><i class="iconfont undefined"></i>
+  nw
+</a></li><li class="dropdown-item"><!----> <a href="/categories/pro/" class="nav-link"><i class="iconfont undefined"></i>
+  pro
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React.js/" class="nav-link"><i class="iconfont undefined"></i>
+  React.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/webpack/" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  逝水流年
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-coding"></i>
+      解忧杂货铺
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Kobe Bryant</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/docs/kobe/record/" class="nav-link"><i class="iconfont undefined"></i>
+  辉煌生涯
+</a></li><li class="dropdown-subitem"><a href="/docs/kobe/shoes/" class="nav-link"><i class="iconfont undefined"></i>
+  球鞋
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/docs/home/" class="nav-link"><i class="iconfont undefined"></i>
+  此心安处是吾乡
+</a></li><li class="dropdown-item"><!----> <a href="/docs/chaoliu/" class="nav-link"><i class="iconfont undefined"></i>
+  愿我如星君如月
+</a></li><li class="dropdown-item"><!----> <a href="/docs/offwhite/" class="nav-link"><i class="iconfont undefined"></i>
+  夜夜流光相皎洁
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hexiaolong24" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-dad8a512></div> <aside class="sidebar" data-v-dad8a512><div class="personal-info-wrapper" data-v-ca798c94 data-v-dad8a512><img src="/hxl.png" alt="author-avatar" class="personal-img" data-v-ca798c94> <h3 class="name" data-v-ca798c94>
+    hexiaolong
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>57</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>26</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  KOBE
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      前端总结
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/CSS/" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Happy/" class="nav-link"><i class="iconfont undefined"></i>
+  Happy
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="iconfont undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/nginx/" class="nav-link"><i class="iconfont undefined"></i>
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Vue.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/electron/" class="nav-link"><i class="iconfont undefined"></i>
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/categories/network/" class="nav-link"><i class="iconfont undefined"></i>
+  network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/nw/" class="nav-link"><i class="iconfont undefined"></i>
+  nw
+</a></li><li class="dropdown-item"><!----> <a href="/categories/pro/" class="nav-link"><i class="iconfont undefined"></i>
+  pro
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React.js/" class="nav-link"><i class="iconfont undefined"></i>
+  React.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/webpack/" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  逝水流年
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-coding"></i>
+      解忧杂货铺
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Kobe Bryant</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/docs/kobe/record/" class="nav-link"><i class="iconfont undefined"></i>
+  辉煌生涯
+</a></li><li class="dropdown-subitem"><a href="/docs/kobe/shoes/" class="nav-link"><i class="iconfont undefined"></i>
+  球鞋
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/docs/home/" class="nav-link"><i class="iconfont undefined"></i>
+  此心安处是吾乡
+</a></li><li class="dropdown-item"><!----> <a href="/docs/chaoliu/" class="nav-link"><i class="iconfont undefined"></i>
+  愿我如星君如月
+</a></li><li class="dropdown-item"><!----> <a href="/docs/offwhite/" class="nav-link"><i class="iconfont undefined"></i>
+  夜夜流光相皎洁
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hexiaolong24" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Promise</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>hexiaolong</span>
+            
+          <span data-v-64685f0e>2020 - </span>
+          2021
+        </a></span></div></div> <div data-v-dad8a512><main class="page"><div class="page-title" style="display:none;"><h1>Promise</h1> <hr> <div data-v-aa64b9d0><i class="iconfont reco-account" data-v-aa64b9d0><span data-v-aa64b9d0>hexiaolong</span></i> <i class="iconfont reco-date" data-v-aa64b9d0><span data-v-aa64b9d0>2018-10-12</span></i> <i class="iconfont reco-eye" data-v-aa64b9d0><span id="/blogs/JavaScript/promise.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-aa64b9d0><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-aa64b9d0><span class="tag-item" data-v-aa64b9d0>JavaScript</span><span class="tag-item" data-v-aa64b9d0>Promise</span><span class="tag-item" data-v-aa64b9d0>前端</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="promise是什么"><a href="#promise是什么" class="header-anchor">#</a> promise是什么</h2> <ul><li><p>抽象表达
+Promise是JS中进行异步编程的新的解决方案</p></li> <li><p>具体表达</p></li></ul> <ol><li>Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及该异步操作的结果值</li> <li>一个 Promise 就是一个对象，它代表了一个异步操作的最终完成或者失败</li> <li>Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers），这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象</li></ol> <h2 id="为什么用promise"><a href="#为什么用promise" class="header-anchor">#</a> 为什么用Promise</h2> <div class="language-html line-numbers-mode"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">/* 
+    1). 指定回调函数的方式更加灵活: 
+      旧的: 必须在启动异步任务前指定
+      promise: 启动异步任务 =&gt; 返回promie对象 =&gt; 给promise对象绑定回调函数(甚至可以在异步任务结束后指定)
+
+    2). 支持链式调用, 可以解决回调地狱问题
+      什么是回调地狱? 回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调函数执行的条件
+      回调地狱的缺点?  不便于阅读 / 不便于异常处理
+      promise链式调用解决
+      async/await终极解决方案
+    */</span>
+
+    <span class="token comment">// 成功的回调函数</span>
+    <span class="token keyword">function</span> <span class="token function">successCallback</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;声音文件创建成功: &quot;</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 失败的回调函数</span>
+    <span class="token keyword">function</span> <span class="token function">failureCallback</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;声音文件创建失败: &quot;</span> <span class="token operator">+</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/* 1.1 使用纯回调函数 */</span>
+    <span class="token function">createAudioFileAsync</span><span class="token punctuation">(</span>audioSettings<span class="token punctuation">,</span> successCallback<span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span>
+
+    <span class="token comment">/* 1.2. 使用Promise */</span>
+    <span class="token keyword">const</span> promise <span class="token operator">=</span> <span class="token function">createAudioFileAsync</span><span class="token punctuation">(</span>audioSettings<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>successCallback<span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/* 
+    2.1. 回调地狱
+     */</span>
+    <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">doSomethingElse</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newResult</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">doThirdThing</span><span class="token punctuation">(</span>newResult<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">finalResult</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Got the final result: '</span> <span class="token operator">+</span> finalResult<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span>
+
+    <span class="token comment">/* 
+    2.2. 使用promise的链式调用解决回调地狱
+     */</span>
+    <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">doSomethingElse</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newResult</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">doThirdThing</span><span class="token punctuation">(</span>newResult<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">finalResult</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Got the final result: '</span> <span class="token operator">+</span> finalResult<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span>failureCallback<span class="token punctuation">)</span>
+
+    <span class="token comment">/* 
+    2.3. async/await: 回调地狱的终极解决方案
+     */</span>
+    <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">const</span> newResult <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">doSomethingElse</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+        <span class="token keyword">const</span> finalResult <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">doThirdThing</span><span class="token punctuation">(</span>newResult<span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Got the final result: '</span> <span class="token operator">+</span> finalResult<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">failureCallback</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>    
+    <span class="token punctuation">}</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><h3 id="关于then方法的理解"><a href="#关于then方法的理解" class="header-anchor">#</a> 关于then方法的理解</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// then()返回的promise的结果由then()指定回调函数执行的结果决定</span>
+<span class="token comment">//     什么是一个失败的promise?</span>
+<span class="token comment">//         throw error  ===&gt; reason是error</span>
+<span class="token comment">//         return 失败的promise  ==&gt; reason是返回的promise的失败reason</span>
+<span class="token comment">//     其它情况都是成功的promise</span>
+<span class="token comment">//         return xxxx  ==&gt; value是xxx</span>
+<span class="token comment">//         return 成功的promise  ==&gt; value是返回的promise的成功value</span>
+
+<span class="token comment">//   then()返回的promise到底是进入下一个成功的回调还是失败的回调与你现在在成功的</span>
+<span class="token comment">//   回调还是在失败的回调没有关系</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">// 在Promise内部会同步执行executor函数</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">//进入成功的回调</span>
+  <span class="token comment">// reject(2) 进入失败的回调</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onResolved()'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token comment">// return undefined 进入成功的回调</span>
+    <span class="token comment">// return 3 进入成功的回调</span>
+    <span class="token comment">// throw 4 进入失败的回调</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// resolve(5) 进入成功的回调</span>
+    <span class="token comment">//  reject(6) 进入失败的回调</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onRejected()'</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span>
+    <span class="token comment">// return undefined 进入成功的回调</span>
+    <span class="token comment">// return 3 进入成功的回调</span>
+    <span class="token comment">// throw 4 进入失败的回调</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// resolve(5) 进入成功的回调</span>
+    <span class="token comment">//  reject(6) 进入失败的回调</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onResolved()2'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onRejected()2'</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h3 id="关于all和race方法的理解"><a href="#关于all和race方法的理解" class="header-anchor">#</a> 关于all和race方法的理解</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> p1 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token comment">//进入成功的回调</span>
+<span class="token keyword">const</span> p2 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">//进入成功的回调</span>
+<span class="token keyword">const</span> p3 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token comment">//进入失败的回调</span>
+    
+<span class="token comment">//all方法要传入一个数组，里边是promise，也可以是普通的值，也会作为成功的回调传到最终的结果中，</span>
+<span class="token comment">//只要有一个失败的就会直接进入失败的回调，</span>
+<span class="token comment">// Promise.all([p1, 'abc', p3, p2]).then(</span>
+Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> <span class="token string">'abc'</span><span class="token punctuation">,</span> p2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token parameter">values</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onResolved()'</span><span class="token punctuation">,</span> values<span class="token punctuation">)</span><span class="token comment">//成功的回调中的结果是和传入时的顺序相关的，并不是和执行的顺序相关</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onRejected()'</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// race竞赛的意思，第一个是成功直接进入成功的，第一个是失败的直接进入失败的</span>
+Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> <span class="token string">'abc'</span><span class="token punctuation">,</span> p2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onResolved2()'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'onRejected2()'</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h1 id="_1-相关api-概念"><a href="#_1-相关api-概念" class="header-anchor">#</a> 1. 相关API/概念</h1> <h2 id="_1-promise-许诺"><a href="#_1-promise-许诺" class="header-anchor">#</a> 1). Promise: 许诺</h2> <div class="language- extra-class"><pre><code>用来创建promise对象的构造函数: function Promise (excutor) {}
+简洁描述: 一个promise对象用来表示一个异步操作的最终状态（完成或失败），以及该异步操作的结果值
+详细描述: Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时是未知的。
+    它允许你为异步操作的成功和失败分别绑定相应的处理回调函数
+    这让异步方法可以像同步方法那样返回，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象
+promise对象的3种状态值
+    pending(未决定的): 初始状态，既不是成功，也不是失败状态。
+    resolved/fulfilled(完成的): 意味着操作成功完成。  
+    rejected(拒绝的): 意味着操作失败。
+promise对象的状态变化(2种)
+    pending ==&gt; resolved: 调用resolve()
+    pending ==&gt; rejected: 调用reject()
+    注意: promise的状态确定后就不可再转换为其它状态
+promise对象内部隐藏的属性
+    [[PromiseStatus]]: 内部变量, 存储promise对象当前的状态值
+    [[PromiseValue]]: 内部变量, 存储成功后的value或失败后的reason
+</code></pre></div><h2 id="_2-excutor-执行器"><a href="#_2-excutor-执行器" class="header-anchor">#</a> 2). excutor: 执行器</h2> <div class="language- extra-class"><pre><code>executor是带有 resolve 和 reject 两个参数的函数: (resolve, reject) =&gt; {}
+由我们定义, 在new Promise()内部会立即同步调用 executor 函数(不是我们调用的)
+异步操作的代码应该在此函数中执行, 一般成功后调用resolve(), 失败后调用reject()
+</code></pre></div><h2 id="_3-resolve-解决"><a href="#_3-resolve-解决" class="header-anchor">#</a> 3). resolve: 解决</h2> <div class="language- extra-class"><pre><code>由Promise函数内部定义, 但由我们调用的函数
+当异步任务成功时, 我们应该调用resolve函数, 并传入需要的value
+resolve函数内部: 
+    同步修改promise对象的状态为resolved和保存成功value, 
+    异步执行已经存储的所有onResolved回调函数
+</code></pre></div><h2 id="_4-reject-拒绝"><a href="#_4-reject-拒绝" class="header-anchor">#</a> 4). reject: 拒绝</h2> <div class="language- extra-class"><pre><code>由Promise函数内部定义, 但由我们调用的函数
+当异步任务失败/抛出error时, 我们应该调用reject函数, 并传入需要的reason
+reject函数内部: 
+    同步修改promise对象的状态为rejected和保存失败reason
+    异步调用经存储的所已有onRejected回调函数
+</code></pre></div><h2 id="_5-then-接着"><a href="#_5-then-接着" class="header-anchor">#</a> 5). then: 接着</h2> <div class="language- extra-class"><pre><code>promise对象的方法: then(onRsolved函数, onRejected函数), 返回值为一个新的promise对象
+作用: 用来指定promise的状态为resolved或rejected时的回调函数
+注意: 
+    then()方法的返回值为新的promise对象, 这样可以进行.then()的链式调用
+    返回的promise的结果状态和值由回调函数的执行结果决定
+        返回promise: 将返回promise的结果值作为then()返回promise的结果
+        返回其它: 成功, 值为返回的结果
+        抛出异常:  失败, 值为抛出的数据
+</code></pre></div><h2 id="_6-onresolved-当已解决时"><a href="#_6-onresolved-当已解决时" class="header-anchor">#</a> 6). onResolved: 当已解决时</h2> <div class="language- extra-class"><pre><code>由then()的第一个参数指定的回调函数: (value) =&gt; {}
+当promise的状态为resolved时自动异步调用
+onResolved函数的返回值:
+    新的promise对象
+    其它或不返回
+</code></pre></div><h2 id="_7-onrejected-当已拒绝时"><a href="#_7-onrejected-当已拒绝时" class="header-anchor">#</a> 7). onRejected: 当已拒绝时</h2> <div class="language- extra-class"><pre><code>由then()的第二个参数或catch()指定的回调函数: (reason) =&gt; {}
+当promise的状态为rejected时自动异步调用
+onRejected函数的返回值:
+    新的promise对象
+    其它或不返回
+</code></pre></div><h2 id="_8-catch-捕获"><a href="#_8-catch-捕获" class="header-anchor">#</a> 8). catch: 捕获</h2> <div class="language- extra-class"><pre><code>promise对象的方法: catch(onRejected函数)
+是then()的语法糖方法, 相当于: then(null, onRejected函数)
+</code></pre></div><h2 id="_9-promise-resolve-value"><a href="#_9-promise-resolve-value" class="header-anchor">#</a> 9). Promise.resolve(value)</h2> <div class="language- extra-class"><pre><code>手动创建一个已经resolve的promise的快捷方法: Promise.resolve(value/promise)
+如果参数为promise: 读取此promise结果值作为返回promise的结果值
+例如：
+Promise.resolve(value)成功的回调
+Promise.resolve(Promise.resolve(value))成功的回调
+Promise.resolve(Promise.reject(value))失败的回调
+</code></pre></div><h2 id="_10-promise-reject-reason"><a href="#_10-promise-reject-reason" class="header-anchor">#</a> 10). Promise.reject(reason)</h2> <div class="language- extra-class"><pre><code>手动创建一个已经reject的promise的快捷方法: Promise.reject(reason)
+只能是失败的回调
+</code></pre></div><h2 id="_11-promise-all-p1-p2-p3"><a href="#_11-promise-all-p1-p2-p3" class="header-anchor">#</a> 11). Promise.all([p1, p2, p3])</h2> <div class="language- extra-class"><pre><code>用来实现批量执行多个promise的异步操作, 返回一个新的promise: Promise.all([promise1, promise2, ...])
+只有当所有异步操作都resolved后, 返回的promise才会变为resolved状态, 只要有一个变为rejected, 返回的promise直接变为rejected
+面试题: 实现一次发多个请求, 只有都成功后才去做处理?
+</code></pre></div><h2 id="_12）-promise-race"><a href="#_12）-promise-race" class="header-anchor">#</a> 12）.Promise.race()</h2> <div class="language- extra-class"><pre><code>竞赛的意思，看第一个返回的promise是成功的还是失败的
+</code></pre></div><h2 id="_13-错误透传-中断promise链"><a href="#_13-错误透传-中断promise链" class="header-anchor">#</a> 13) .错误透传/中断promise链</h2> <div class="language- extra-class"><pre><code>错误透传就是一直.then的时候一直传入的是成功的回调，直到最后才指定了一个失败的回调，这样也能在最后接收到这个错误的信息，这是因为内部，会设置成功的回调和失败的回调的默认值
+onResolved : value =&gt; value
+onRejected : reason =&gt; {throw reason}
+中断Promise链就是返回一个padding状态的promise
+</code></pre></div><h1 id="_2-自定义promise"><a href="#_2-自定义promise" class="header-anchor">#</a> 2. 自定义Promise</h1> <h2 id="_1-整体结构"><a href="#_1-整体结构" class="header-anchor">#</a> 1). 整体结构</h2> <div class="language- extra-class"><pre><code>function Promise (excutor) {}
+Promise.prototype.then = function (onResolved, onRejected) {}
+Promise.prototype.catch = function (onRejected) {}
+Promise.resolve = function (value) {}
+Promise.reject = function (reason) {}
+Promise.all = function (promises) {}
+Promise.race = function (promises) {}
+</code></pre></div><h2 id="_2-promise构造函数的实现"><a href="#_2-promise构造函数的实现" class="header-anchor">#</a> 2). Promise构造函数的实现</h2> <div class="language- extra-class"><pre><code>初始化对象的属性:
+    status: 'pending' 对象的状态(resolved/rejected)
+    data: undefined  成功/失败的数据
+    callbacks: []  用来保存待执行的成功和失败的回调函数  {onResolved(value){}, onRejected(reason){}}
+定义2个函数
+    function resolve (value) {}
+    function reject (reason) {}
+立即同步执行excutor(resolve, reject)
+    使用try...catch捕获异常, 执行: reject(error)
+resolve函数实现
+    立即同步指定成功的状态: status: 'resolved'
+    立即同步指定成功的数据: data: value
+    立即异步执行callbacks中包含所有待执行onResolved函数
+reject函数的实现
+    立即同步指定成功的状态: status: 'rejected'
+    立即同步指定成功的数据: data: reason
+    立即异步执行callbacks中包含所有待执行onRejected函数
+</code></pre></div><h2 id="_3-promise-then-onresolved-onrejected-的实现"><a href="#_3-promise-then-onresolved-onrejected-的实现" class="header-anchor">#</a> 3). promise.then(onResolved, onRejected)的实现</h2> <div class="language- extra-class"><pre><code>1). 返回一个新的promise对象
+2). 处理onResolved/onRejected 2个回调函数, 并根据它们执行的结果来指定返回的promise的结果
+    1). resolved
+        a. 立即异步调用onResolved(p.data)
+        b. 根据它们执行的结果来指定返回的promise的结果
+            1). 抛出了异常, 返回的promise就失败了, reason是error  reject(error)
+            2). 结果是非promise值, 返回的promise就成功了, value是结果值   resolve(result)
+            3). 结果是promise, 将这个promise的结果直接传递给返回的promise    result.then(resolve, reject)
+    2). rejected
+        a. 立即异步调用onRejected(p.data)
+        b. 根据它们执行的结果来指定返回的promise的结果
+    3). pending
+        a. 将onResolved和onRejected保存到p的callbacks中
+        b. 当回调函数调用时, 根据它们执行的结果来指定返回的promise的结果
+</code></pre></div><h2 id="_4-catch-的实现"><a href="#_4-catch-的实现" class="header-anchor">#</a> 4). catch()的实现</h2> <div class="language- extra-class"><pre><code>调用then()只指定失败的回调函数: then(null, onRejected)
+</code></pre></div><h2 id="_5-promise-resolve-value-promise-的实现"><a href="#_5-promise-resolve-value-promise-的实现" class="header-anchor">#</a> 5). Promise.resolve(value/promise)的实现</h2> <div class="language- extra-class"><pre><code>1). 创建一个新的promise对象返回
+2). 在执行器内
+    如果参数是promise, 将promise的结果传递给返回的promise对象
+    如果参数不是promise, 直接resolve(value)
+</code></pre></div><h2 id="_6-promise-rejected-reason-的实现"><a href="#_6-promise-rejected-reason-的实现" class="header-anchor">#</a> 6). Promise.rejected(reason)的实现</h2> <div class="language- extra-class"><pre><code>1). 创建一个新的promise对象返回
+2). 在执行器内通过执行reject(reason)
+</code></pre></div><h2 id="_7-promise-resolvedelay-与promise-rejectdelay-的实现"><a href="#_7-promise-resolvedelay-与promise-rejectdelay-的实现" class="header-anchor">#</a> 7). Promise.resolveDelay()与Promise.rejectdelay()的实现</h2> <div class="language- extra-class"><pre><code>在对应的实现上指定延迟指定时间后才去确定返回promise的结果
+</code></pre></div><h2 id="_8-promise-all-promises-的实现"><a href="#_8-promise-all-promises-的实现" class="header-anchor">#</a> 8). Promise.all(promises)的实现</h2> <div class="language- extra-class"><pre><code>需求: 一次发多个异步ajax请求, 只有当所有请求都成功, 来进行界面的正常处理, 只要有一个失败, 就直接进行错误
+1). 创建一个新的promise对象并返回
+2). 在执行器内遍历所有promises, 并得到每个promise的结果
+3). 如果有一个结果为失败, 直接reject(reason)
+4). 如果当前promise成功了, 保存value到数组values中对应的位置
+5). 只有当所有promise都成功了, resolve(values)
+</code></pre></div><h2 id="_9-promise-race-promises-的实现"><a href="#_9-promise-race-promises-的实现" class="header-anchor">#</a> 9). Promise.race(promises)的实现</h2> <div class="language- extra-class"><pre><code>需求: 一次发多个异步ajax请求, 只有有一个请求返回了(成功或失败), 后续处理就可以进行了, 其它请求忽略
+1). 创建一个新的promise对象并返回
+2). 在执行器内遍历所有promises, 并指定每个promise的onResolved与onRejected
+3). 如果有一个结果为失败, 直接reject(reason)
+3). 如果有一个结果为成功, 直接resolve(value)
+</code></pre></div></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">3/16/2021, 7:43:36 PM</span></div></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-40a3448a><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#promise是什么" class="sidebar-link" data-v-40a3448a>promise是什么</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#为什么用promise" class="sidebar-link" data-v-40a3448a>为什么用Promise</a></li><li class="level-3" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#关于then方法的理解" class="sidebar-link" data-v-40a3448a>关于then方法的理解</a></li><li class="level-3" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#关于all和race方法的理解" class="sidebar-link" data-v-40a3448a>关于all和race方法的理解</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_1-promise-许诺" class="sidebar-link" data-v-40a3448a>1). Promise: 许诺</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_2-excutor-执行器" class="sidebar-link" data-v-40a3448a>2). excutor: 执行器</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_3-resolve-解决" class="sidebar-link" data-v-40a3448a>3). resolve: 解决</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_4-reject-拒绝" class="sidebar-link" data-v-40a3448a>4). reject: 拒绝</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_5-then-接着" class="sidebar-link" data-v-40a3448a>5). then: 接着</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_6-onresolved-当已解决时" class="sidebar-link" data-v-40a3448a>6). onResolved: 当已解决时</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_7-onrejected-当已拒绝时" class="sidebar-link" data-v-40a3448a>7). onRejected: 当已拒绝时</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_8-catch-捕获" class="sidebar-link" data-v-40a3448a>8). catch: 捕获</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_9-promise-resolve-value" class="sidebar-link" data-v-40a3448a>9). Promise.resolve(value)</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_10-promise-reject-reason" class="sidebar-link" data-v-40a3448a>10). Promise.reject(reason)</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_11-promise-all-p1-p2-p3" class="sidebar-link" data-v-40a3448a>11). Promise.all([p1, p2, p3])</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_12）-promise-race" class="sidebar-link" data-v-40a3448a>12）.Promise.race()</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_13-错误透传-中断promise链" class="sidebar-link" data-v-40a3448a>13) .错误透传/中断promise链</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_1-整体结构" class="sidebar-link" data-v-40a3448a>1). 整体结构</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_2-promise构造函数的实现" class="sidebar-link" data-v-40a3448a>2). Promise构造函数的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_3-promise-then-onresolved-onrejected-的实现" class="sidebar-link" data-v-40a3448a>3). promise.then(onResolved, onRejected)的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_4-catch-的实现" class="sidebar-link" data-v-40a3448a>4). catch()的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_5-promise-resolve-value-promise-的实现" class="sidebar-link" data-v-40a3448a>5). Promise.resolve(value/promise)的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_6-promise-rejected-reason-的实现" class="sidebar-link" data-v-40a3448a>6). Promise.rejected(reason)的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_7-promise-resolvedelay-与promise-rejectdelay-的实现" class="sidebar-link" data-v-40a3448a>7). Promise.resolveDelay()与Promise.rejectdelay()的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_8-promise-all-promises-的实现" class="sidebar-link" data-v-40a3448a>8). Promise.all(promises)的实现</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/JavaScript/promise.html#_9-promise-race-promises-的实现" class="sidebar-link" data-v-40a3448a>9). Promise.race(promises)的实现</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.1cf7dfac.js" defer></script><script src="/assets/js/3.f4fb3d7b.js" defer></script><script src="/assets/js/1.3aa5e91a.js" defer></script><script src="/assets/js/34.7a86e974.js" defer></script>
+  </body>
+</html>

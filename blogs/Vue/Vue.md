@@ -1,6 +1,6 @@
 ---
 title: Vue
-date: 2019-08-31
+date: 2019-04-11
 sidebar: 'auto'
 categories:
  - Vue.js

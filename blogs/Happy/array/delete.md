@@ -1,6 +1,6 @@
 ---
 title: delete
-date: 2019-08-28
+date: 2019-07-28
 sidebar: 'auto'
 categories:
  - Happy

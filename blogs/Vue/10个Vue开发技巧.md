@@ -1,6 +1,6 @@
 ---
 title: 10个Vue开发技巧
-date: 2019-08-31
+date: 2020-04-22
 sidebar: 'auto'
 categories:
  - Vue.js

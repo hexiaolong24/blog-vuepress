@@ -1,6 +1,6 @@
 ---
 title: flatten
-date: 2019-08-28
+date: 2019-11-28
 sidebar: 'auto'
 categories:
  - Happy

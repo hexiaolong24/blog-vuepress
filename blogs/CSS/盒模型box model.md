@@ -1,6 +1,6 @@
 ---
 title: 盒模型box model
-date: 2019-08-28
+date: 2018-08-28
 sidebar: 'auto'
 categories:
  - CSS

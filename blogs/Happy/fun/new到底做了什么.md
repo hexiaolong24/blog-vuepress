@@ -1,6 +1,6 @@
 ---
 title: instanceof
-date: 2019-08-28
+date: 2018-10-24
 sidebar: 'auto'
 categories:
  - Happy

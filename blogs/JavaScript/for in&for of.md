@@ -1,6 +1,6 @@
 ---
 title: for in&for of
-date: 2019-09-12
+date: 2018-08-25
 sidebar: auto
 categories:
 - JavaScript

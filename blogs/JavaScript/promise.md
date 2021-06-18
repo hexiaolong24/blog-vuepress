@@ -1,6 +1,6 @@
 ---
 title: Promise
-date: 2019-09-12
+date: 2018-10-12
 sidebar: auto
 categories:
 - JavaScript

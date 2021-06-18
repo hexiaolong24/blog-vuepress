@@ -1,6 +1,6 @@
 ---
 title: call apply bind
-date: 2019-08-28
+date: 2018-08-28
 sidebar: 'auto'
 categories:
  - Happy

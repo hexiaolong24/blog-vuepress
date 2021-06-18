@@ -1,6 +1,6 @@
 ---
 title: ES6 7 8 9 10 11 12新特性
-date: 2019-08-24
+date: 2018-08-22
 sidebar: auto
 categories:
 - JavaScript
