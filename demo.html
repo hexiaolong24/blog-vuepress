@@ -8,21 +8,25 @@
 </head>
 <body>
 <script>
-  function Person(name) {
-    this.name = name
-  }
-  function _new(fn, ...args) {
-    // 实例对象的隐式对象为函数的原型对象
-    let obj = Object.create(fn.prototype)
-    // 将函数的this指向实例调用对象 并调用对象
-    let res = fn.call(obj,...args)
-    return res instanceof Object ? res : obj
-    // 如果函数本身不返回object，则返回实例对象
-  }
-  tom = _new(Person, 'tom')
-  console.log('=========start=============')
-  console.log('tom', tom);
-  console.log('=========end===============')
+  function fn(arr) {
+    let newArr = []
+    let obj = {}
+    arr.forEach((item, index) => {
+        if(!newArr.includes(item)){
+            newArr.push(item)
+        }else { 
+            
+           if(!obj[item]){
+               obj[item] = 1
+              }
+            obj[item]++
+        }
+        
+    })
+    return obj
+}
+
+console.log(fn([2, 10, 35, 2, 2, 35]));
   
 </script>
 </body>
