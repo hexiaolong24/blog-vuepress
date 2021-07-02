@@ -3,13 +3,15 @@ title: 原生node ajax
 date: 2019-07-12
 sidebar: 'auto'
 categories:
- - nw
+ - network
 tags:
  - network
  - 前端
  - 网络后台相关
  - ajax
 isShowComments: false
+keys:
+ - '1360d01f3f0d562dc30b433a62443dcd'
 ---
 
 ```js

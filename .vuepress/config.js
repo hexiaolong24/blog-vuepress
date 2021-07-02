@@ -73,17 +73,17 @@ module.exports = {
           },
         ]
       },
-      {
-        "text": "Contact",
-        "icon": "reco-message",
-        "items": [
-          {
-            "text": "GitHub",
-            "link": "https://github.com/hexiaolong24",
-            "icon": "reco-github"
-          }
-        ]
-      }
+    //   {
+    //     "text": "Contact",
+    //     "icon": "reco-message",
+    //     "items": [
+    //       {
+    //         "text": "weibo",
+    //         "link": "https://weibo.com/2986995087/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1",
+    //         "icon": "reco-weibo"
+    //       }
+    //     ]
+    //   }
     ],
     // 侧边栏
     "sidebar": {
@@ -150,7 +150,7 @@ module.exports = {
     'recordLink': 'http://beian.miit.gov.cn',
     'cyberSecurityRecord': '冀公网安备 13072602000042号',
     // 'cyberSecurityLink': '公安部备案指向链接',
-    "startYear": "2020"
+    "startYear": "2018"
   },
   "markdown": {
     "lineNumbers": true
