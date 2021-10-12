@@ -10,6 +10,98 @@ tags:
 - 前端
 ---
 
+##  补充
+-   Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大
+-   所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果
+-   状态不受外界影响，只有异步操作的结果才能决定
+-   状态不可逆
+-   第二种写法要好于第一种写法，理由是第二种写法可以捕获前面then方法执行中的错误，也更接近同步的写法（try/catch）。因此，建议总是使用catch()方法，而不使用then()方法的第二个参数。
+```js
+// bad
+promise
+  .then(function(data) {
+    // success
+  }, function(err) {
+    // error
+  });
+
+// good
+promise
+  .then(function(data) { //cb
+    // success
+  })
+  .catch(function(err) {
+    // error
+  });
+```
+-   Promise.all()方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。
+
+-   如果作为参数的 Promise 实例，自己定义了catch方法，那么它一旦被rejected，并不会触发Promise.all()的catch方法。
+```js
+let p1 = Promise.reject(2).catch((err) => {
+    console.log('self_err', err);// 2
+    return err
+})
+let p2 = 2
+// 此时会进入Permise.all的then，如果不return [undefiend, 2],如果return err [2, 2],取决于p1.catch的执行结果
+Promise.all([p1, p2]).then((res) => {
+    console.log('res', res);
+})
+.catch((err) => {
+    console.log('err', err);
+})
+```
+-   如果指定时间内没有获得结果，就将 Promise 的状态变为reject，否则变为resolve。
+```js
+const p = Promise.race([
+  fetch('/resource-that-may-take-a-while'),
+  new Promise(function (resolve, reject) {
+    setTimeout(() => reject(new Error('request timeout')), 5000)
+  })
+]);
+
+p
+.then(console.log)
+.catch(console.error);
+```
+-   Promise.allSettled()返回的新的 Promise 实例，一旦发生状态变更，状态总是fulfilled，不会变成rejected。状态变成fulfilled后，它的回调函数会接收到一个数组作为参数，该数组的每个成员对应前面数组的每个 Promise 对象。
+```js
+const resolved = Promise.resolve(42);
+const rejected = Promise.reject(-1);
+
+const allSettledPromise = Promise.allSettled([resolved, rejected]);
+
+allSettledPromise.then(function (results) {
+  console.log(results);
+});
+// [
+//    { status: 'fulfilled', value: 42 },
+//    { status: 'rejected', reason: -1 }
+// ]
+```
+-   Promise.any()跟Promise.race()方法很像，只有一点不同，就是Promise.any()不会因为某个 Promise 变成rejected状态而结束，必须等到所有参数 Promise 变成rejected状态才会结束。
+```js
+Promise.any([
+  fetch('https://v8.dev/').then(() => 'home'),
+  fetch('https://v8.dev/blog').then(() => 'blog'),
+  fetch('https://v8.dev/docs').then(() => 'docs')
+]).then((first) => {  // 只要有一个 fetch() 请求成功
+  console.log(first);
+}).catch((error) => { // 所有三个 fetch() 全部请求失败
+  console.log(error); // AggregateError: All promises were rejected
+});
+```
+
+
+
+
+
+
+
+
+
+
+
 ##  promise是什么
 
 - 抽象表达
@@ -254,6 +346,51 @@ Promise.race([p1, 'abc', p2]).then(
     Promise.resolve(value)成功的回调
     Promise.resolve(Promise.resolve(value))成功的回调
     Promise.resolve(Promise.reject(value))失败的回调
+-   参数是一个 Promise 实例
+如果参数是 Promise 实例，那么Promise.resolve将不做任何修改、原封不动地返回这个实例。
+-   参数是一个thenable对象
+thenable对象指的是具有then方法的对象，比如下面这个对象。
+```js
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+```
+Promise.resolve()方法会将这个对象转为 Promise 对象，然后就立即执行thenable对象的then()方法。
+```js
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+
+let p1 = Promise.resolve(thenable);
+p1.then(function (value) {
+  console.log(value);  // 42
+});
+```
+上面代码中，thenable对象的then()方法执行后，对象p1的状态就变为resolved，从而立即执行最后那个then()方法指定的回调函数，输出42。
+还有一种情况是thenable会进入catch方法
+```js
+// 会进入catch 但是直接Promise.reject() 不行会报错，直接Promise.resolve()也不会进入then,也不进入catch
+let p1 = Promise.resolve({
+    then: (resolve, reject) => {
+        reject(1)
+    }
+})
+p1.then((res) => {
+    console.log('res', res)
+})
+.catch((err) => {
+    console.log('err', err)
+})
+```
+
+-   参数不是具有then()方法的对象，或根本就不是对象
+如果参数是一个原始值，或者是一个不具有then()方法的对象，则Promise.resolve()方法返回一个新的 Promise 对象，状态为resolved。
+-   不带任何参数 （then方法中接收到的是undefined）
+Promise.resolve()方法允许调用时不带参数，直接返回一个resolved状态的 Promise 对象。
     
     
 ## 10). Promise.reject(reason)
@@ -346,3 +483,11 @@ Promise.race([p1, 'abc', p2]).then(
     2). 在执行器内遍历所有promises, 并指定每个promise的onResolved与onRejected
     3). 如果有一个结果为失败, 直接reject(reason)
     3). 如果有一个结果为成功, 直接resolve(value)
+
+##  10).Promise.try
+    捕获所有同步和异步的错误
+```js
+Promise.try(() => database.users.get({id: userId}))
+.then(...)
+.catch(...)
+```

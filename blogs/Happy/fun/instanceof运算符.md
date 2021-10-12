@@ -8,6 +8,8 @@ tags:
  - 自定义函数库
 ---
 
+A instanceof B
+-   B的原型对象（prototype）是否出现在A的原型链上
 ```js
 function ins(l,r) {
   let R = r.prototype;

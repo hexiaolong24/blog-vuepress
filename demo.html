@@ -1,33 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<script>
-  function fn(arr) {
-    let newArr = []
-    let obj = {}
-    arr.forEach((item, index) => {
-        if(!newArr.includes(item)){
-            newArr.push(item)
-        }else { 
-            
-           if(!obj[item]){
-               obj[item] = 1
-              }
-            obj[item]++
-        }
-        
-    })
-    return obj
-}
 
-console.log(fn([2, 10, 35, 2, 2, 35]));
-  
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一版
+        // let num = 0
+        // async function fn() {
+        //     for (let i = 0; i < 5; i++) {
+        //         console.log(i)
+        //         await fn1(i);
+        //     }
+        // }
+
+        // function fn1(i) {
+        //     if (num > 5) {
+        //         num = 0
+        //         return
+        //     }
+        //     num++
+        //     console.log('======', i)
+        //     return Promise.reject().catch(() => {
+        //         fn1(i)
+        //     })
+        // }
+        // fn()
+
+        // 第二版
+        // let num = 0
+        // async function fn() {
+        //     for (let i = 0; i < 5; i++) {
+        //         console.log('for', i)
+        //         await fn1(i);
+        //     }
+        // }
+
+        // function fn1(i) {
+        //     if (num > 4) {
+        //         num = 0
+        //         return
+        //     }
+        //     num++
+        //     console.log('======', i)
+        //     return Promise.reject().catch(() => {
+        //         fn1(i)
+        //         console.log('=======fn1()after=======')
+        //         return Promise.reject()
+        //     })
+        // }
+        // fn()
+
+        // 第三版
+        // async function fn() {
+        //     for (let i = 0; i < 5; i++) {
+        //         console.log('for', i)
+        //         await fn1(i);
+        //     }
+        // }
+
+        // function fn1(i) {
+        //     return new Promise(async (resolve, reject) => {
+        //         for (let j = 0; j < 5; j++) {
+        //             console.log('======', i)
+        //             await Promise.reject().catch(() => {
+        //                 console.log('=======fn1()after=======')
+        //             })
+        //         }
+        //         resolve()
+        //     })
+        // }
+        // fn()
+    </script>
 </body>
+
 </html>

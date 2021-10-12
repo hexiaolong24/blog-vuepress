@@ -33,6 +33,18 @@ compiler对象是一个全局单例，他负责把控整个webpack打包的构�
 
 - 最终Webpack打包出来的bundle文件是一个IIFE的执行函数。
 
+##  module
+模块，在webpack眼里，任何可以被导入导出的文件都是一个模块。
+
+##  chunk
+chunk是webpack拆分出来的
+-   每个入口文件都是一个chunk
+-   通过 import、require 引入的代码也是
+-   通过 splitChunks 拆分出来的代码也是
+
+##  bundle
+webpack打包出来的文件，也可以理解为就是对chunk编译压缩打包等处理后的产出。
+
 ##  Entry
 
 入口(Entry)指示 webpack 以哪个文件为入口起点开始打包，分析构建内部依赖图
@@ -71,11 +83,12 @@ vue inspect --mode=production > webpack.prod.js
 
 - `less-loader`将less文件编译成css文件，`css-loader`将css文件变成commonjs模块加载js中，里面内容是样式字符串，`style-loader`创建style标签，将js中的样式资源插入进行，添加到head中生效
 
-- `html-loader`处理html文件的img图片（负责引入img，从而能被url-loader进行处理）,`url-loader`处理图片资源，默认处理不了html中img图片，可以设置图片的体积，小于设置值的图片就会被转换成base64格式，改loader默认使用的是es6模块化，`html-loader`使用的是commonJS,所以需要关闭`url-loader`的esModule
+- `html-loader`处理html文件的img图片（负责引入img，从而能被url-loader进行处理）,`url-loader`处理图片资源，默认处理不了html中img图片，可以设置图片的体积，小于设置值的图片就会被转换成base64格式，该loader默认使用的是es6模块化，`html-loader`使用的是commonJS,所以需要关闭`url-loader`的esModule
 
 - `file-loader`打包其他资源(除了html/js/css资源以外的资源)
 
 ### plugins
+-   `webpack-bundle-analyzer`,分析bundle文件各个模板的大小情况
 
 - `html-webpack-plugin`，复制 './src/index.html' 文件，并自动引入打包输出的所有资源（JS/CSS）
 
@@ -158,7 +171,7 @@ module.exports = {
 
 ### loader
 
-- `postcss-loader`,css兼容性处理：`postcss` --> `postcss-loader` `postcss-preset-env`,帮postcss找到`package.json`中`browserslist`里面的配置，通过配置加载指定的css兼容性样式
+- `postcss-loader`,css兼容性处理：`postcss` --> `postcss-loader` `postcss-preset-env`,帮postcss找到`package.json`中`browserslist`里面的配置，通过配置加载指定的css兼容性样式，postcss-preset-env 包含 autoprefixer（专门用来添加厂商前缀的），因此如果你已经使用了 preset 就无需单独添加它了
 
 - `eslint-loader`,设置检查规则package.json中eslintConfig中设置，`"eslintConfig": {"extends":"airbnb-base"}`
 
@@ -342,9 +355,24 @@ module.exports = {
 
 - code-split 让某个文件被单独打包成一个chunk,import动态导入语法：能将某个文件单独打包,`import(/* webpackChunkName: 'test' */'./test')`
 
-- preload和prefetch,懒加载：当文件需要使用时才加载，import()语法，prefetch预加载，会在使用之前，提前加载js文件，等其他资源加载完毕，浏览器空闲了，再偷偷加载资源`import(/* webpackChunkName: 'test', webpackPrefetch: true */'./test')`
+- preload和prefetch,预加载：当文件需要使用时提前预加载，import()语法，prefetch预加载，会在使用之前，提前加载js文件，下一次导航可能需要使用的资源`import(/* webpackChunkName: 'test', webpackPrefetch: true */'./test')`
 
-- externals，指定某个包拒绝被打包
+- externals，指定某个包拒绝被打包，在实际项目中，我们可以发现在最后生成的bundle文件中，第三方库所占的比重很大。我们可以通过配置externals，将其中常用的第三库（比如vue、vue-router、vuex等）抽离出来，放置在CDN中，通过script来引入，减少打包文件体积。
+```js
+<script
+  src="https://code.jquery.com/jquery-3.1.0.js"
+  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+  crossorigin="anonymous">
+</script>
+
+externals: {
+    // jquery，即key为项目逻辑代码中引入的第三方库名称
+    // jQuery，即value，表示通过script引入之后的全局变量
+    jquery: 'jQuery'
+}
+
+import $ from 'jquery';
+```
 
 
 

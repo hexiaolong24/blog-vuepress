@@ -43,6 +43,7 @@ Function.prototype.myApply = function(obj) {
 ```
 
 ### bind
+-   返回值：返回一个原函数的拷贝，并拥有指定的 this 值和初始参数
 ```js
 Function.prototype.myBind = function(obj) {
   obj = obj ? Object(obj) : window;
@@ -51,5 +52,19 @@ Function.prototype.myBind = function(obj) {
   return function () {
     return fn.myApply(obj,[...args,...arguments])
   }
+}
+
+
+Function.prototype.myBind = function(obj) {
+  obj = obj ? Object(obj) : window;
+  let _self = this
+  let args = Array.prototype.slice.call(arguments,1)
+  let Fn = function() {}
+  let bindFn = function() {
+    return _self.myApply(this instanceof bindFn ? this : obj,[...args,...arguments])
+  }
+  Fn.prototype = this.prototype
+  bindFn.prototype = new Fn()
+  return bindFn
 }
 ```

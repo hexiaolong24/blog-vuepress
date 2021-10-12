@@ -20,6 +20,7 @@ flatten1(arr) // [1, 2, 3, 4]
 ```js
 function flatten1(arr) {
   let result = [];
+  arr = [].concat(...arr)
   arr.forEach(item => {
     if(Array.isArray(item)) {
       result = result.concat(flatten1(item))
@@ -31,7 +32,7 @@ function flatten1(arr) {
 }
 
 function flatten2(arr) {
-  let result = [].concat[...arr];
+  let result = [].concat(...arr);
   while (result.some(item => Array.isArray(item))) {
     result = [].concat(...result)
   }

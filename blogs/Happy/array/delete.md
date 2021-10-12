@@ -14,7 +14,7 @@ tags:
 
 ```js
 arr = [1, 2, 3, 4, 5]
-delete(arr, 4, 5) // [1, 2, 3]
+del(arr, 4, 5) // [1, 2, 3]
 ```
 
 ### 实现
@@ -27,11 +27,6 @@ function del(arr, ...args) {
     }
   }
   return arr
-}
-
-// 传入一个数组
-function delAll(arr, delArr) {
-  return del(arr, ...delArr);
 }
 ```
 
