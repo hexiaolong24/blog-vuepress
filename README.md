@@ -14,3 +14,13 @@ bgImageStyle: {
   height: '500px'
 }
 isShowTitleInHome: false
+
+
+# activity
+- 国际  https://intpalfish.com/kid/act/referral/singaporemath/?channel=8001&refer=123
+- 国内  https://www.ipalfish.com/kid/act/referral/cnsingaporemath/?channel=8002&refer=123
+
+# international-activity
+- 国际正式  https://intpalfish.com/introduce-platform/singaporemath/
+
+

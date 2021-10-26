@@ -84,4 +84,74 @@ function sort(arr) {
     return left.concat(flag, right)
 }
 ```
+##  27.移除元素
+
+-   暴力递归 时间复杂度O(n^2)
+```js
+var removeElement = function (nums, val) {
+    let size = nums.length
+    for (let i = 0; i < size; i++) {
+        if (nums[i] === val) {
+            for (let j = i + 1; j < size; j++) {
+                nums[j - 1] = nums[j]
+            }
+            i--
+            size--
+        }
+    }
+    return size
+};
+```
+
+-  快慢指针 时间复杂度O(n)
+```js
+var removeElement = function (nums, val) {
+    let left = 0
+    for (let right = 0; right < nums.length; right++) {
+        if (nums[right] !== val) {
+            nums[left++] = nums[right]
+        }
+    }
+    return left
+};
+```
+
+##  977. 有序数组的平方
+```js
+var sortedSquares = function(nums) {
+    let arr = []
+    for(let left = 0, right = nums.length - 1; left <= right;) {
+        let LEFT = Math.abs(nums[left]) * Math.abs(nums[left])
+        let RIGHT = Math.abs(nums[right]) * Math.abs(nums[right])
+        if( LEFT > RIGHT) {
+            arr.unshift(LEFT)
+            left++
+        }else {
+            arr.unshift(RIGHT)
+            right--
+        }
+    }
+    return arr
+};
+```
+
+##  209. 长度最小的子数组
+```js
+var minSubArrayLen = function(target, nums) {
+    let l = r = sum = 0,
+        res = nums.length + 1
+    while(r < nums.length) {
+        sum += nums[r++]
+        while(sum >= target) {
+            res = res < (r - l) ? res : (r - l)
+            sum -= nums[l++]
+        }
+    }
+    return res > nums.length ? 0 : res
+};
+```
+
+
+
+
 
