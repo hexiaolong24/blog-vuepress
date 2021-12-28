@@ -8,6 +8,10 @@ tags:
  - 算法
 ---
 
+
+##  数组理论知识
+- 数组是存放在连续内存空间上的相同数据类型的集合
+- 下标都是从0开始
 ##  704 二分查找
 ```js
 var search = function(nums, target) {
@@ -27,6 +31,9 @@ var search = function(nums, target) {
 
 ##  冒泡排序
 ```js
+// 时间复杂度：O(N^2)
+// 空间复杂度：O(1)
+// 每次循环将最大的一个放在最后
 function sort(arr) {
     for(let i = 0; i < arr.length -1; i++) {
         for(let j = 0; j < arr.length -i -1; j++) {
@@ -43,6 +50,9 @@ function sort(arr) {
 
 ##  选择排序
 ```js
+// 时间复杂度：O(N^2)
+// 空间复杂度：O(1)
+// 默认最小的
 function sort(arr) {
     let min
     for(let i = 0; i < arr.length; i++) {
@@ -64,6 +74,8 @@ function sort(arr) {
 
 ## 快速排序
 ```js
+// 时间复杂度：O(NlogN)
+// 空间复杂度：O(logN) 
 function sort(arr) {
     if(arr.length <= 1){
         return arr;
@@ -83,6 +95,24 @@ function sort(arr) {
     right = sort(right)
     return left.concat(flag, right)
 }
+```
+
+##  插入排序
+```js
+var sortArray = function(nums) {
+    const length = nums.length
+    // 需要从1开始
+    for(let i = 1; i < length; i++){
+        let j = i
+        let tempValue = nums[i]  // 获取要比较的值
+        while(j > 0 && nums[j - 1] > tempValue){
+            nums[j] = nums[j - 1]
+            j--
+        }
+        nums[j] = tempValue
+    }
+    return nums
+};
 ```
 ##  27.移除元素
 
@@ -118,6 +148,7 @@ var removeElement = function (nums, val) {
 
 ##  977. 有序数组的平方
 ```js
+// 时间复杂度O(n)
 var sortedSquares = function(nums) {
     let arr = []
     for(let left = 0, right = nums.length - 1; left <= right;) {

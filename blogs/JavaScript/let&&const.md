@@ -107,6 +107,16 @@ for (let i = 0; i < 3; i++) {
 // abc
 // abc
 ```
+>   catch也存在块级作用域
+````js
+try {
+
+} catch(error) {
+
+}
+// Error error is not defined
+console.log(error) 
+```
 
 ##  const
 
