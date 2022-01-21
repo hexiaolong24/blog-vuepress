@@ -21,6 +21,28 @@ tags:
 
 3.  for in 不能遍历set，但可以遍历其他伪数组，返回索引下标，也可以遍历字符串，返回的是value
 
+```js
+Object.prototype.objCustom = function() {};
+Array.prototype.arrCustom = function() {};
+
+let iterable = [3, 5, 7];
+iterable.foo = 'hello';
+
+for (let i in iterable) {
+  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
+}
+
+for (let i in iterable) {
+  if (iterable.hasOwnProperty(i)) {
+    console.log(i); // logs 0, 1, 2, "foo"
+  }
+}
+
+for (let i of iterable) {
+  console.log(i); // logs 3, 5, 7
+}
+```
+
 ##  三点运算符
 
 - 可以直接对数组进行遍历取值，不能直接作用在对象，是ES9中加入了，`{...obj}`相当于是浅拷贝，返回的是一个对象，在`react`中给标签属性传参的时候可以这样写，我们都知道`react`中写js代码需要用`{}`括起来，但是写这个语法的时候只写一个括号就可以，但实际上是外边还应该再有一个`{}`的，同样在小程序开发中作为标签属性传参的时候也是

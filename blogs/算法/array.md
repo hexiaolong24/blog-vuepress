@@ -13,6 +13,8 @@ tags:
 - 数组是存放在连续内存空间上的相同数据类型的集合
 - 下标都是从0开始
 ##  704 二分查找
+-   时间复杂度O(logn)
+-   空间复杂度O(1)
 ```js
 var search = function(nums, target) {
     let l = 0,r = nums.length-1
@@ -23,78 +25,82 @@ var search = function(nums, target) {
         }else {
             l = nums[mid] > target ? l : mid + 1
             r = nums[mid] > target ? mid -1 : r
+            // if(nums[mid] > target) {
+            //     r = mid - 1
+            // }else {
+            //     l = mid + 1
+            // }
         }
     }
     return -1
 };
 ```
 
-##  冒泡排序
+##  912 冒泡排序
 ```js
 // 时间复杂度：O(N^2)
 // 空间复杂度：O(1)
 // 每次循环将最大的一个放在最后
-function sort(arr) {
-    for(let i = 0; i < arr.length -1; i++) {
-        for(let j = 0; j < arr.length -i -1; j++) {
-            if(arr[j] > arr[j + 1]) {
-                let tem = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = tem
+var sortArray = function(nums) {
+    for(let i = 0; i< nums.length-1; i++) {
+        for(let j = 0; j < nums.length-i-1; j++) {
+            if(nums[j] > nums[j+1]) {
+                [nums[j],nums[j+1]] = [nums[j+1],nums[j]]
             }
         }
     }
-    return arr
-}
+    return nums
+};
 ```
 
 ##  选择排序
 ```js
 // 时间复杂度：O(N^2)
 // 空间复杂度：O(1)
-// 默认最小的
-function sort(arr) {
-    let min
-    for(let i = 0; i < arr.length; i++) {
-        min = i
-        for(let j = i+1; j< arr.length; j++) {
-            if(arr[min] > arr[j]) {
+// 默认当前是最小的
+var sortArray = function(nums) {
+    for(let i = 0; i< nums.length; i++) {
+        let min = i
+        for(let j = i; j < nums.length; j++) {
+            // 如果发现有更小的，则更新下标
+            if(nums[min] > nums[j]) {
                 min = j
             }
         }
+        // 每循环一次检查下标是否与初始值相同，如果不相同，则交换彼此
         if(min !== i) {
-            let tem = arr[min]
-            arr[min] = arr[i]
-            arr[i] = tem
+            [nums[min], nums[i]] = [nums[i], nums[min]]
         }
     }
-    return arr
-}
+    return nums
+};
 ```
 
 ## 快速排序
 ```js
 // 时间复杂度：O(NlogN)
 // 空间复杂度：O(logN) 
-function sort(arr) {
-    if(arr.length <= 1){
-        return arr;
+var sortArray = function(nums) {
+    if(nums.length <= 1){
+        return nums;
     }
-    let index = parseInt(arr.length/2),
-        flag = arr.splice(index, 1),
+    let index = parseInt(nums.length/2),
+        // 要将flag 去除 splice会改变原数组
+        flag = nums.splice(index, 1),
         left = [],
         right = [];
-    for(let i=0; i < arr.length; i++) {
-        if(arr[i] > flag) {
-            right.push(arr[i])
+    for(let i=0; i < nums.length; i++) {
+        if(nums[i] > flag) {
+            right.push(nums[i])
         }else {
-            left.push(arr[i])
+            left.push(nums[i])
         }
     }
-    left = sort(left)
-    right = sort(right)
+    left = sortArray(left)
+    right = sortArray(right)
+    // 注意合并中间项
     return left.concat(flag, right)
-}
+};
 ```
 
 ##  插入排序
@@ -115,17 +121,25 @@ var sortArray = function(nums) {
 };
 ```
 ##  27.移除元素
+-   你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+-   不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组
+-   要知道数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖
 
--   暴力递归 时间复杂度O(n^2)
+-   暴力递归 
 ```js
+// 时间复杂度O(n^2)
+// 空间复杂度O(1)
 var removeElement = function (nums, val) {
     let size = nums.length
     for (let i = 0; i < size; i++) {
         if (nums[i] === val) {
+            // 出现目标元素则依次将后一项覆盖到当前项
             for (let j = i + 1; j < size; j++) {
                 nums[j - 1] = nums[j]
             }
+            // 因为有删除元素，所以i-- 不然会漏检一次
             i--
+            // 最终数组长度--
             size--
         }
     }
@@ -133,15 +147,20 @@ var removeElement = function (nums, val) {
 };
 ```
 
--  快慢指针 时间复杂度O(n)
+-  快慢指针
 ```js
+// 时间复杂度O(n)
+// 空间复杂度O(1)
 var removeElement = function (nums, val) {
     let left = 0
     for (let right = 0; right < nums.length; right++) {
+        // 如果不相等，left复制right,同时left++
+        // 如果等于目标值，left原地不动，right++
         if (nums[right] !== val) {
             nums[left++] = nums[right]
         }
     }
+    // 最终left的值就是数组的长度
     return left
 };
 ```
@@ -151,15 +170,16 @@ var removeElement = function (nums, val) {
 // 时间复杂度O(n)
 var sortedSquares = function(nums) {
     let arr = []
-    for(let left = 0, right = nums.length - 1; left <= right;) {
-        let LEFT = Math.abs(nums[left]) * Math.abs(nums[left])
-        let RIGHT = Math.abs(nums[right]) * Math.abs(nums[right])
-        if( LEFT > RIGHT) {
-            arr.unshift(LEFT)
-            left++
+    // 注意 l <= r，如果不加=，会漏掉一个元素
+    for(let l = 0, r = nums.length-1;l <= r;) {
+        const L = Math.abs(nums[l])
+        const R = Math.abs(nums[r])
+        if(L > R) {
+            arr.unshift(L*L)
+            l++
         }else {
-            arr.unshift(RIGHT)
-            right--
+            arr.unshift(R*R)
+            r--
         }
     }
     return arr
@@ -168,16 +188,25 @@ var sortedSquares = function(nums) {
 
 ##  209. 长度最小的子数组
 ```js
+// 时间复杂度O(n)
+// 空间复杂度O(1)
 var minSubArrayLen = function(target, nums) {
     let l = r = sum = 0,
+        // 初始化一个大于length的值，为最终返回做比对
         res = nums.length + 1
+    // r 控制边界
     while(r < nums.length) {
+        // sum累计 r++
         sum += nums[r++]
+        // 出现sum大于目标和的情况下
         while(sum >= target) {
+            // 说明达成目标，更新 res
             res = res < (r - l) ? res : (r - l)
+            // 同事左边指针向右移动，sum减去相应值
             sum -= nums[l++]
         }
     }
+    // 与初始化值做比较
     return res > nums.length ? 0 : res
 };
 ```

@@ -26,7 +26,7 @@ var LRUCache = function(capacity) {
 LRUCache.prototype.get = function(key) {
     if(this.stack.has(key)){
         // 有key 更新到第一位 删除由来的位置
-        conse tem = this.stack.get(key);
+        const tem = this.stack.get(key);
         this.stack.delete(key);
         this.stack.set(key, tem);
         return tem;
@@ -47,7 +47,7 @@ LRUCache.prototype.put = function(key, value) {
         this.stack.delete(key);
         this.stack.set(key, value)
     }else if(this.stack.size < this.capacity){
-        // 没有 并且容量乜有满，直接在最头部添加
+        // 没有 并且容量没有满，直接在最头部添加
         this.stack.set(key, value)
     }else {
         // 没有，容量已满,删除第一个
