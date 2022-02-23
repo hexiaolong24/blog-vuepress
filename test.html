@@ -668,7 +668,7 @@
  </head>
 
  <body>
-     <div class="spoon"></div>
+     <div id="button" class="spoon"></div>
      <div class="chopsticks"></div>
      <div class="bowl">
          <div class="laver"></div>
@@ -705,11 +705,43 @@
          // [ { ( ) } ]
      </script>
      <script>
-         var convertBST = function (root) {
+        var arr = [{
+          key: '01',
+          value: '乐乐'
+        }, {
+          key: '02',
+          value: '博博'
+        }, {
+          key: '03',
+          value: '淘淘'
+        }, {
+          key: '04',
+          value: '哈哈'
+        }, {
+          key: '01',
+          value: '乐乐'
+        }];
 
-
-
-         };
+    // 方法1：利用reduce方法遍历数组,reduce第一个参数是遍历需要执行的函数，第二个参数是item的初始值
+    var obj = {};
+    arr = arr.reduce(function (item, next) {
+      /**
+       * item 是[] 
+       * next 是arr的每一个元素，{
+          key: '02',
+          value: '博博'
+        }
+       */
+      // 先判断obj[next.key] 有没有 默认没有 obj[next.key] = true && item.push(next)
+      // 添加过就是 '' 忽略
+      // 最后结果 不是true 而是 '01': 1 , '02': 2，是因为obj[next.key] = true && item.push(next) 
+      // && 的优先级高于 = 成了 obj[next.key] = （true && item.push(next)）push会返回数组长度，所以是1 2 3 4 
+      // 改成 （obj[next.key] = true） && item.push(next) 这样就是  '01': true , '02': true
+      obj[next.key] ? '' : obj[next.key] = true && item.push(next);
+      return item;
+    }, []);
+    console.log(arr)
+    console.log(obj)
      </script>
  </body>
 

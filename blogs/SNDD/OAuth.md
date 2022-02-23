@@ -1,5 +1,5 @@
 ---
-title: Auth2.0
+title: OAuth2.0
 date: 2019-10-12
 sidebar: 'auto'
 categories:

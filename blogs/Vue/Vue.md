@@ -12,7 +12,7 @@ tags:
 
 ## vue框架特点
 
-1. 是一套构建用户界面(`user interface`)的渐进式框架。与其他重量级框架不同的是，`Vue` 从根本上采用最小成本、渐进增量(`incrementally adoptable`)的设计。`Vue` 的核心库只专注于视图层，并且很容易与其他第三方库或现有项目集成。\
+1. 是一套构建用户界面(`user interface`)的渐进式框架。与其他重量级框架不同的是，`Vue` 从根本上采用最小成本、渐进增量(`incrementally adoptable`)的设计。`Vue` 的核心库只专注于视图层，并且很容易与其他第三方库或现有项目集成。
 
 2. 使用的是`MVVM`架构模式
 
@@ -394,7 +394,7 @@ const mutations = {
     }else {
       //原有的数据是可以监视的，但是如果是自己新添加的，就不会获得监视，页面不能同时更新
       //必须使用Vue.set,添加一个响应式的属性
-      // food.coutn = 1 错误的
+      // food.count = 1 错误的
       Vue.set(food,'count',1)
       state.shopcart.push(food)
     }

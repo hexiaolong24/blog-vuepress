@@ -11,6 +11,7 @@
     "vuepress-theme-reco": "1.5.3"
   },
   "dependencies": {
+    "pify": "^5.0.0",
     "vue-class-component": "^7.2.3"
   },
   "description": "愿你走出半生 归来仍是少年"

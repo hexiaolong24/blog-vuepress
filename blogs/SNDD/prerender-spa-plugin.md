@@ -17,8 +17,11 @@ const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const { PuppeteerRenderer: Renderer } = PrerenderSPAPlugin;
 // 同步读取文件
 const { readFileSync } = require('fs');
+// 扫描符合规则的文件
 const glob = require('glob');
-const { resolvePath } = require('./utils');
+// 解析路径
+const { resolve } = require('path');
+const resolvePath = (...args) => resolve(__dirname, '..', ...args);
 
 /**
  * 预渲染插件后续处理
@@ -36,16 +39,12 @@ class HtmlFixPlugin {
 
     compiler.hooks.done.tapAsync('HtmlFixPlugin', (compilation, done) => {
       glob.sync(resolvePath('build/**/*.{html,js}')).forEach(path => {
+        // 替换cdn地址
         const content = readFileSync(path).toString();
         let fixContent = content.replace(
           /http:\/\/localhost:8006\//g,
           'https://jps04.cdnpalfish.com/international-activity/',
         );
-
-        // 1v1-7-th 测试静态资源放nginx
-        // if (path.split('/').slice(-2, -1)[0] === '1v1-7-th') {
-        //   fixContent = fixContent.replace(/https:\/\/jps04\.cdnpalfish\.com\/international-activity\//g, '../');
-        // }
 
         compilerFS.writeFile(path, fixContent, err => err && console.log(`[html-fix-plugin] ${path}\n ${err}`));
       });

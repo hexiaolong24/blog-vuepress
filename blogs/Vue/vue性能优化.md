@@ -13,6 +13,19 @@ tags:
 ##  代码层面
 
 1.  v-if 和 v-show
+-   v-if dom的销毁与重建
+```css
+// v-show
+// 页面不占位,下面元素上移 事件不能触发
+display: none;
+
+// 占位 事件能触发
+opacity: 0;
+
+// 占位 事件不能触发
+visibility: hidden;
+
+```
 
 2.  computed 和 wacth
 

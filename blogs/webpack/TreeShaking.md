@@ -10,6 +10,23 @@ tags:
 
 ##  是什么
 在webpack对模块进行打包时，将模块中未被使用的冗余代码剔除，仅打包有效代码，精简生成包的体积。
+
+##  摇树到底摇的是什么
+Tree Shaking 本质是借助 ES module 的静态分析能力来消除无用的 js 代码的。这句话有两个关键点。
+1.  首先就是静态分析能力，我们知道，Tree Shaking 的目的是减少 js 文件的体积，节约带宽，提高加载速度，所以文件必须在到达浏览器之前完成瘦身，也就是在打包的时候完成这个功能。ES6 使用 import 和 export 可以在编译期确定模块间的依赖关系，这是代码优化的必需条件，可以说，可以进行静态分析是 Tree Shaking 的基础。这也意味着被转换正 ES5 的代码是不能 Tree Shaking 的。
+2.  其次，我们需要理解什么是无用的 js 代码。一般认为，不会被执行，执行的结果不会被用到或者代码只会影响死变量（只写不读）的代码就是无用的 js 代码。
+
+- 事实就是 Tree Shanking 依赖于 ES6 import 和 export 静态分析能力，可以在编译阶段将不会被执行，执行的结果不会被用到，代码只会影响死变量（只写不读）的代码移除。
+
+##  失效
+1.  export default 会导致 Tree Shaking 失败。原因牵扯比较多，简单来说就是 export default 打包后会作为一个对象整体。Webapck 会分析顶层对象的使用情况，并不会分析对象中的属性，所以 export default 要么就是整体引入，要么就是整体删除。
+2.  副作用 -- 当我们调用某个函数时，该函数除了返回值之外，还产生附加的影响，例如修改全局变量，函数外的变量或修改参数,控制台输出等，称为存在副作用
+
+##  babel会什么会使tree shaking 失效
+
+- webpack 默认不支持 ES6 方式的类库，那如果我们不用 webpack 打包类库，改用 Rollup 打包为 ES6，再使用 webpack 引用 rollup 打包好的类库，Tree Shaking 是否能成功呢？
+
+- babel <= 6 不生效，Babel >= 7 是生效的，原因在于 babel6 在将 ES6 转为 ES5 的过程中，原本无副作用的代码产生了副作用
 ##  怎么用
 1.  ESModule
 前提是模块必须采用ES6Module语法，因为treeShaking依赖ES6的静态语法：import 和 export。如果项目中使用了babel的话， @babel/preset-env 默认将模块转换成CommonJs语法，因此需要设置module：false，webpack2后已经支持ESModule。
@@ -49,7 +66,7 @@ compress: true;函数的调用会被用函数体替换，使用变量处用其�
 在package.json中设置如何处理副作用：
 ```js
 // package.json
-//false:无副作用，模块无export被使用时，可直接跳过（删除）该模块
+//false:无副作用，对于未使用的导出模块，webpack 会认为这是一个纯函数，直接跳过副作用分析
 //true:有副作用，保留副作用代码
 "sideEffects": [Boolean], 
 or

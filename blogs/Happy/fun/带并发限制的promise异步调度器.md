@@ -88,3 +88,71 @@ let urls = [
 ]
 sendRequest(urls, 3, () => console.log('finally'))
 ```
+
+##  带并发限制的promise装饰器
+```js
+class RequestDecorator {
+    constructor(max) {
+        this.maxCount = max
+        this.currentCount = 0
+        this.waitQueue = []
+    }
+    async request(caller) {
+        if (this.currentCount >= this.maxCount) {
+            // return new Promise((resolve, reject) => {}),结果取决于何时执行resolve
+            await this.wait()
+        }
+        try {
+            this.currentCount++
+            let res = await caller()
+            return Promise.resolve(res)
+        } catch (error) {
+            return Promise.reject(error)
+        } finally {
+            this.currentCount--
+            this.next()
+        }
+    }
+    next() {
+        if (this.waitQueue.length > 0) {
+            let _resolve = this.waitQueue.shift()
+            _resolve()
+        }
+    }
+    wait() {
+        let temResolve = null
+        let p = new Promise((resolve, reject) => temResolve = resolve)
+        this.waitQueue.push(temResolve)
+        return p
+    }
+}
+
+let promiseAll = []
+
+let requestDecorator = new RequestDecorator(3)
+
+for (let i = 0; i < 10; i++) {
+    promiseAll.push(requestDecorator.request(
+        function () {
+            return new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log(i)
+                        resolve(xhr.responseText)
+                    }else {
+                        reject('err')
+                    }
+                }
+                xhr.open('GET', 'https://hacker-news.firebaseio.com/v0/topstories.json', true)
+                xhr.send();
+            })
+        }
+    ))
+}
+Promise.all(promiseAll).then((res) => {
+    console.log('promiseAllres====', res)
+}).catch((err) => {
+    console.log('promiseAllerr====', err)
+})
+```

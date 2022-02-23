@@ -1,10 +1,6 @@
-const EventEmitter = require('events');
-
-let emitter = new EventEmitter();
-
-emitter.on('myEvent', function sth () {
-  emitter.on('myEvent', sth);
-  console.log('hi');
-});
-
-emitter.emit('myEvent');
+function fn() {
+    return setTimeout(() => {
+        return Promise.resolve(1)
+    }, 1000)
+}
+console.log(fn())
