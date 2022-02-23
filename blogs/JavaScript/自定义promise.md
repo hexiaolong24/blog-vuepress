@@ -6,8 +6,6 @@ categories:
 - JavaScript
 tags:
 - JavaScript
-- Promise
-- 前端
 ---
 
 ### 思路

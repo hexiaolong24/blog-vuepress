@@ -4,8 +4,6 @@ date: 2018-10-24
 sidebar: 'auto'
 categories:
  - Happy
-tags:
- - 自定义函数库
 ---
 
 -   注意点：new和bind一起用bind会失效，不能改变函数内部的this，this还是新生成的实例对象，但是可以传参 1 相当于第一个参数

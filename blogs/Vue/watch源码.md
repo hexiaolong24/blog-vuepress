@@ -6,7 +6,6 @@ categories:
  - Vue.js
 tags:
  - Vue
- - 框架
 ---
 
 ##  watch

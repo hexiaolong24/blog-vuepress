@@ -6,8 +6,6 @@ categories:
  - JavaScript
 tags:
  - JavaScript
- - 前端
- - 微任务 宏任务
 ---
 
 ## js单线程

@@ -6,7 +6,6 @@ categories:
  - 算法
 tags:
  - 算法
- - 剑指offer
 ---
 
 ##  剑指offer 16 数值的整数次方

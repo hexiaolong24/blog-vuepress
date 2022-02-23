@@ -5,7 +5,7 @@ sidebar: 'auto'
 categories:
  - 算法
 tags:
- - LRU
+ - 算法
 ---
 
 ##  Map

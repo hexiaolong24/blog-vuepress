@@ -6,7 +6,6 @@ categories:
 - JavaScript
 tags:
 - JavaScript
-- 前端
 ---
 
 ##  用法

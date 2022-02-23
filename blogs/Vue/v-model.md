@@ -6,8 +6,6 @@ categories:
  - Vue.js
 tags:
  - Vue
- - 前端
- - 框架
 ---
 
 ##  双向数据绑定为什么不能造成死循环

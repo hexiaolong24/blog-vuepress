@@ -6,7 +6,6 @@ categories:
  - CSS
 tags:
  - CSS
- - BFC
 ---
 
 ##  解决浮动引起的父元素高度塌陷

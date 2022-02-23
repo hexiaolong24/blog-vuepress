@@ -6,8 +6,6 @@ categories:
  - Vue.js
 tags:
  - Vue
- - 前端
- - 框架
 ---
 
 ##  优雅更新props

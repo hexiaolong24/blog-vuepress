@@ -6,8 +6,6 @@ categories:
  - CSS
 tags:
  - CSS
- - 截图
- - 前端
 ---
 
 ##  通用配置
@@ -48,10 +46,10 @@ var capture = {
   replaceHost: function replaceHost(imgUrl) {
     // 由于 cdn 的域名和 当前项目域名存在跨域，会导图片跨域，截图在部分 ios 下失败。
     // 其中域名转发要在当前项目nginx 中配置的
-    // https://coolcdn.igetcool.com/p/2020/2/d08df052cf41815a699938935616ac59.jpg => ${location.origin}/coolcdn/p/2020/2/d08df052cf41815a699938935616ac59.jpg
-    // nginx代理中以  coolcdn 开头再转发到  https://coolcdn.igetcool.com
+    // https://coolcdn.com/p/2020/2/d08df052cf41815a699938935616ac59.jpg => ${location.origin}/coolcdn/p/2020/2/d08df052cf41815a699938935616ac59.jpg
+    // nginx代理中以  coolcdn 开头再转发到  https://coolcdn.com
     var imgUrl2 = imgUrl;
-    var preRE = /^((http|https):)?\/\/coolcdn\.igetcool\.com/i;
+    var preRE = /^((http|https):)?\/\/coolcdn\.com/i;
     imgUrl2 = imgUrl2.replace(preRE, "".concat(location.origin, "/coolcdn"));
     return imgUrl2;
   },

@@ -6,8 +6,6 @@ categories:
  - others
 tags:
  - 前端
- - 持续交付
- - 工程化
 ---
 
 #  持续交付

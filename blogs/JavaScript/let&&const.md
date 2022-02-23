@@ -6,8 +6,6 @@ categories:
 - JavaScript
 tags:
 - JavaScript
-- 前端
-- ES6
 ---
 
 ##  let 

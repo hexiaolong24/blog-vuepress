@@ -43,44 +43,24 @@ module.exports = {
             {
                 "text": "解忧杂货铺",
                 "icon": "reco-coding",
-                "items": [{
-                        "text": "Kobe Bryant",
-                        "link": "/docs/kobe/",
-                        "items": [{
-                                "text": "辉煌生涯",
-                                "link": "/docs/kobe/record/"
-                            },
-                            {
-                                "text": "球鞋",
-                                "link": "/docs/kobe/shoes/"
-                            }
-                        ]
-                    },
+                "items": [
                     {
                         "text": "此心安处是吾乡",
                         "link": "/docs/home/",
                     },
-                    {
-                        "text": "愿我如星君如月",
-                        "link": "/docs/chaoliu/",
-                    },
-                    {
-                        "text": "夜夜流光相皎洁",
-                        "link": "/docs/offwhite/",
-                    },
                 ]
             },
-            //   {
-            //     "text": "Contact",
-            //     "icon": "reco-message",
-            //     "items": [
-            //       {
-            //         "text": "weibo",
-            //         "link": "https://weibo.com/2986995087/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1",
-            //         "icon": "reco-weibo"
-            //       }
-            //     ]
-            //   }
+              {
+                "text": "Contact",
+                "icon": "reco-message",
+                "items": [
+                  {
+                    "text": "weibo",
+                    "link": "https://weibo.com/2986995087/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1",
+                    "icon": "reco-weibo"
+                  }
+                ]
+              }
         ],
         // 侧边栏
         "sidebar": {

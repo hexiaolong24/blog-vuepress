@@ -6,8 +6,6 @@ categories:
  - React.js
 tags:
  - React.js
- - 前端
- - 框架
 ---
 
 ##  react的理解

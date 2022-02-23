@@ -6,8 +6,6 @@ categories:
  - Vue.js
 tags:
  - Vue
- - 前端
- - 框架
 ---
 
 ##  数组更新检测

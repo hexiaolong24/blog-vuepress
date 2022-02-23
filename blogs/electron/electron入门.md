@@ -4,8 +4,6 @@ date: 2019-03-11
 sidebar: 'auto'
 categories:
  - electron
-tags:
- - electron
 ---
 
 ##  hello world

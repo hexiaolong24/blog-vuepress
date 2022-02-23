@@ -84,9 +84,9 @@ url = /oauth/authorize/?client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&&response_
 
 1.  封装前端登录组件，点击登录，调用node服务接口信息，传参redirect_uri（真正的回跳地址，ac服务的地址其实是中转地址）
 
-2.  搭建node服务ac.igetcool.com,申请注册ac.igetcool.com的client_id和client_secert,都保存在node端，前端不再关心client_id
+2.  搭建node服务ac.com,申请注册ac.com的client_id和client_secert,都保存在node端，前端不再关心client_id
 
-3.  node服务记录子系统传来的redirect_uri，从sso换取code，因为换取code的时候redirect_uri只能是注册client_id时的域名，所以为了解决多个系统对应多套id的问题直接回传ac.igetcool.com/api/code
+3.  node服务记录子系统传来的redirect_uri，从sso换取code，因为换取code的时候redirect_uri只能是注册client_id时的域名，所以为了解决多个系统对应多套id的问题直接回传ac.com/api/code
 
 ```js
 public async login() {
