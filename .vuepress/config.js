@@ -1,3 +1,4 @@
+const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
     "title": "8_KOBE_24",
     "description": "愿你走出半生 归来仍是少年",
@@ -9,7 +10,7 @@ module.exports = {
             "link",
             {
                 "rel": "icon",
-                "href": "/logo.jpeg"
+                "href": "/icon.png"
             }
         ],
         [
@@ -115,12 +116,12 @@ module.exports = {
             }
         ],
         // 左侧头像
-        "logo": "/logo.jpeg",
+        "logo": "/icon.png",
         "search": true,
         "searchMaxSuggestions": 10,
         "lastUpdated": "Last Updated",
         "author": "hexiaolong",
-        "authorAvatar": "/hxl.png",
+        "authorAvatar": "/hxl.webp",
         // 备案信息
         // "record": "冀ICP备20017673号",
         'recordLink': 'http://beian.miit.gov.cn',
