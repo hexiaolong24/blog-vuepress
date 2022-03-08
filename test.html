@@ -813,20 +813,33 @@
       <div class="ramen"></div>
     </div>
     <script>
-      Function.prototype.bind = function(context, ...args) {
-        if(typeof this !== 'function') {
-          return 
-        }
-        let self = this
-        context = context ? Object(context) : window
-        let fn = function() {}
-        let bindFn = function() {
-          self.apply(this instanceof bindFn ? this : context, [...args,...arguments])
-        }
-        fn.prototype = this.prototype
-        bindFn.prototype = new fn()
-        return bindFn
+      // function fn() {
+      //   console.log('green')
+      //   setTimeout(() => {
+      //     console.log('yellow')
+      //     setTimeout(() => {
+      //       console.log('red')
+      //       setTimeout(fn, 2000)
+      //     }, 1000)
+      //   }, 3000)
+      // }
+      // fn()
+
+      function helper(time) {
+        return new Promise(resolve => {
+          setTimeout(resolve, time)
+        })
       }
+      (async () => {
+        while(1) {
+          console.log('green')
+          await helper(5000)
+          console.log('yellow')
+          await helper(2000)
+          console.log('red')
+          await helper(3000)
+        }
+      })()
     </script>
     
   </body>
