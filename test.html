@@ -813,47 +813,21 @@
       <div class="ramen"></div>
     </div>
     <script>
-      // function fn() {
-      //     console.log('requestAn')
-      // }
-      // requestAnimationFrame(fn)
-      // setTimeout(() => {
-      //     console.log('setTimeout')
-      // },0)
-      // Promise.resolve().then(() => {
-      //     console.log('Promise')
-      // })
-      // Promise
-      // requestAn
-      // setTimeout
-
-      // function fn() {
-      //     console.log('requestAn')
-      // }
-      // setTimeout(() => {
-      //     console.log('setTimeout')
-      // },0)
-      // requestAnimationFrame(fn)
-      // Promise.resolve().then(() => {
-      //     console.log('Promise')
-      // })
-      // [ { ( ) } ]
-    </script>
-    <script>
-      var maxSubArray = function(nums) {
-        let sum = 0;
-        let max = sum[0];
-        for (let item of nums) {
-          // sum + item >= item
-          if (sum > 0) {
-            sum += item;
-          } else {
-            sum = item;
-          }
-          max = Math.max(sum, max);
+      Function.prototype.bind = function(context, ...args) {
+        if(typeof this !== 'function') {
+          return 
         }
-        return max;
-      };
+        let self = this
+        context = context ? Object(context) : window
+        let fn = function() {}
+        let bindFn = function() {
+          self.apply(this instanceof bindFn ? this : context, [...args,...arguments])
+        }
+        fn.prototype = this.prototype
+        bindFn.prototype = new fn()
+        return bindFn
+      }
     </script>
+    
   </body>
 </html>

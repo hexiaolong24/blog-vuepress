@@ -50,17 +50,9 @@ export function reduce(arr, callback, initValue){
 Array.prototype.myReduce = function(callback,initval) {
   if(callback instanceof Function) {
     let arr = this;
-    let result = []
-    if(initval) {
-      result = initval;
-      for(let i = 0; i< arr.length; i++) {
-        result = callback(result,arr[i],arr)
-      }
-    }else {
-      result = arr[0];
-      for(let i = 1; i< arr.length; i++) {
-        result = callback(result,arr[i],arr)
-      }
+    let result = initval ? initval ? arr[0]
+    for(let i = 0; i< arr.length; i++) {
+      result = callback(result,arr[i],arr)
     }
     return result
   }else {
@@ -162,5 +154,16 @@ export function some(arr, callback){
     }
     // 如果没有满足条件的返回false
     return false;
+}
+Array.prototype.some = function(callback) {
+  if(!Array.isArray(this)) {
+    throw new Error(`${this}.some is not a function`)
+  }
+  for(let i = 0; i < this.length; i++) {
+    if(callback(this[i], i, this)) {
+      return true
+    }
+  }
+  return false
 }
 ```

@@ -46,24 +46,27 @@ Function.prototype.myApply = function(context) {
 ```js
 Function.prototype.myBind = function(context) {
   if(typeof this !== 'function') {
-    return undefined;
+    return;
   }
   context = context ? Object(context) : window;
   let fn = this
   let args = Array.prototype.slice.call(arguments,1)
   return function () {
-    return fn.myApply(obj,[...args,...arguments])
+    return fn.myApply(context,[...args,...arguments])
   }
 }
-
 
 Function.prototype.myBind = function(obj) {
   obj = obj ? Object(obj) : window;
   let _self = this
   let args = Array.prototype.slice.call(arguments,1)
+  // 构建一个干净的函数，用于保存原函数的原型
   let Fn = function() {}
   let bindFn = function() {
-    return _self.myApply(this instanceof bindFn ? this : obj,[...args,...arguments])
+    // this instanceof bindFn, 判断是否使用 new 来调用 bindFn
+    // 如果是 new 来调用的话，this的指向就是其实例，
+    // 如果不是 new 调用的话，就改变 this 指向到指定的对象
+    return _self.myApply(this instanceof bindFn ? this : obj, [...args,...arguments])
   }
   Fn.prototype = this.prototype
   bindFn.prototype = new Fn()

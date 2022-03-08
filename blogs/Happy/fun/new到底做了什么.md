@@ -29,6 +29,6 @@ function _new(fn, ...args) {
   // 将函数的this指向实例对象 并调用对象
   let res = fn.call(obj,...args)
   // 如果函数本身不返回object，则返回实例对象
-  return res instanceof Object ? res : obj
+  return res.constructor === Object ? res : obj
 }
 ```

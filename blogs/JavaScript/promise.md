@@ -90,6 +90,39 @@ Promise.any([
 });
 ```
 
+- Promise.prototype.finally
+如果finally中不throw 或 返回一个失败的promise，那么结果和没加finally一样，完全取决与上面的结果，val err都会透传
+```js
+Promise.resolve(2)
+  .then(() => {}, () => {})
+  .then(
+    val => console.log(val) // undefiend
+  )
+Promise.resolve(2)
+  .finally(() => {
+  })
+  .then(
+    val => console.log(val) // 2
+  )
+Promise.reject(2)
+  .finally(() => {
+  })
+  .then(
+    val => console.log(val)
+  )
+  .catch(
+    err => console.log(err) // 2
+  )
+Promise.reject(2)
+  .finally(() => {
+    throw 3
+  })
+  .then((val) => console.log(val))
+  .catch(err => {
+    console.log('err',err) // 3
+  })
+```
+
 
 
 

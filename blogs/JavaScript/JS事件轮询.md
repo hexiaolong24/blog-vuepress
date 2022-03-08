@@ -8,6 +8,83 @@ tags:
  - JavaScript
 ---
 
+##  event loop
+- event loop翻译出来就是事件循环，可以理解为实现异步的一种方式
+- 为了协调事件，用户交互，脚本，渲染，网络等，用户代理必须使用本节所述的event loop
+- window event loop
+- worker event loop
+
+##  task
+- 一个event loop有一个或者多个task队列
+- 当用户代理安排一个任务，必须将该任务增加到相应的event loop的一个tsak队列中
+- 每一个task都来源于指定的任务源，比如可以为鼠标、键盘事件提供一个task队列，其他事件又是一个单独的队列。可以为鼠标、键盘事件分配更多的时间，保证交互的流畅
+- task任务源非常宽泛，比如ajax的onload，click事件，基本上我们经常绑定的各种事件都是task任务源，还有数据库操作（IndexedDB ）
+- 一个 task queue 在数据结构上是一个集合，而不是队列，因为事件循环处理模型会从选定的 task queue 中获取第一个可运行任务（runnable task），而不是使第一个 task 出队。上述内容来自 HTML规范[3]
+
+##  microtask
+- 每一个event loop都有一个microtask队列，一个microtask会被排进microtask队列而不是task队列
+
+##  进一步了解event loop
+- 每个线程都有自己的event loop
+- 浏览器可以有多个event loop，browsing contexts和web workers就是相互独立的
+- 所有同源的browsing contexts可以共用event loop，这样它们之间就可以相互通信
+
+##  处理过程
+1.  在所选 task queue (taskQueue)中约定必须包含一个可运行任务。如果没有此类 task queue，则跳转至下面 microtasks 步骤。
+2.  让 taskQueue 中最老的 task (oldestTask) 变成第一个可执行任务，然后从 taskQueue 中删掉它。
+3.  将上面 oldestTask 设置为 event loop 中正在运行的 task。
+4.  执行 oldestTask。
+5.  将 event loop 中正在运行的 task 设置为 null。
+6.  执行 microtasks 检查点（也就是执行 microtasks 队列中的任务）。
+7.  设置 hasARenderingOpportunity 为 false。
+8.  更新渲染。
+9.  如果当前是 window event loop 且 task queues 里没有 task 且 microtask queue 是空的，同时渲染时机变量 hasARenderingOpportunity 为 false ，去执行 idle period（requestIdleCallback）。
+10. 返回到第一步。
+
+##  event loop中的Update the rendering
+这是event loop中很重要部分，在第7步会进行Update the rendering（更新渲染），规范允许浏览器自己选择是否更新视图。也就是说可能不是每轮事件循环都去更新视图，只在有必要的时候才更新视图。
+- 在一轮event loop中多次修改同一dom，只有最后一次会进行绘制。渲染更新（Update the rendering）会在event loop中的tasks和microtasks完成后进行，但并不是每轮event loop都会更新渲染，这取决于是否修改了dom和浏览器觉得是否有必要在此时立即将新状态呈现给用户。如果在一帧的时间内（时间并不确定，因为浏览器每秒的帧数总在波动，16.7ms只是估算并不准确）修改了多处dom，浏览器可能将变动积攒起来，只进行一次绘制，这是合理的。
+
+- 如果希望在每轮event loop都即时呈现变动，可以使用requestAnimationFrame。
+raf是在微任务之后，但是不是每次eventloop都执行。因为ui渲染不是每次循环都能执行到
+
+##  更新渲染
+1.  遍历当前浏览上下文中所有的 document ，必须按在列表中找到的顺序处理每个 document 。
+2.  渲染时机（Rendering opportunities）：如果当前浏览上下文中没有到渲染时机则将所有 docs 删除，取消渲染（此处是否存在渲染时机由浏览器自行判断，根据硬件刷新率限制、页面性能或页面是否在后台等因素）。
+3.  如果当前文档不为空，设置 hasARenderingOpportunity 为 true 。
+4.  不必要的渲染（Unnecessary rendering）：如果浏览器认为更新文档的浏览上下文的呈现不会产生可见效果且文档的 animation frame callbacks 是空的，则取消渲染。（终于看见 requestAnimationFrame 的身影了
+5.  从 docs 中删除浏览器认为出于其他原因最好跳过更新渲染的文档。
+6.  如果文档的浏览上下文是顶级浏览上下文，则刷新该文档的自动对焦候选对象。
+7.  处理 resize 事件，传入一个 performance.now() 时间戳。
+8.  处理 scroll 事件，传入一个 performance.now() 时间戳。
+9.  处理媒体查询，传入一个 performance.now() 时间戳。
+10. 运行 CSS 动画，传入一个 performance.now() 时间戳。
+11. 处理全屏事件，传入一个 performance.now() 时间戳。
+12. 执行 requestAnimationFrame 回调，传入一个 performance.now() 时间戳。
+13. 执行 intersectionObserver 回调，传入一个 performance.now() 时间戳。
+14. 对每个 document 进行绘制。
+15. 更新 ui 并呈现。
+
+- 其实 rAF 执行属于 render UI 阶段，严格上来讲不属于微任务或者宏任务,它会在 style/layout/paint 之前调用
+- raf是在微任务之后，但是不是每次eventloop都执行,因为ui渲染不是每次循环都能执行到
+
+```js
+function fn() {
+    console.log('requestAn')
+}
+requestAnimationFrame(fn)
+setTimeout(() => {
+    console.log('setTimeout')
+},0)
+Promise.resolve().then(() => {
+    console.log('Promise')
+})
+// Promise 一定再setTimeout 之前
+// requestAn 一定在Promise 之后
+// 但是requestAn 和 setTimeout 不一定 ，取决于当次eventloop 是否更新渲染
+```
+
+
 ## js单线程
 
 - 首先我们都知道js是单线程的，script标签中的所有代码都会在js的主线程执行，js为什么不能设计成多线程的，这样可以提高效率啊？

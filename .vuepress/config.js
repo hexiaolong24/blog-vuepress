@@ -123,7 +123,7 @@ module.exports = {
         "author": "hexiaolong",
         "authorAvatar": "/hxl.webp",
         // 备案信息
-        // "record": "冀ICP备20017673号",
+        "record": "京ICP备2022006153号",
         'recordLink': 'http://beian.miit.gov.cn',
         // 'cyberSecurityRecord': '冀公网安备 13072602000042号',
         // 'cyberSecurityLink': '公安部备案指向链接',

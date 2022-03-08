@@ -244,7 +244,7 @@ tags:
       const values = new Array(promisesLength)
       // 遍历每个待处理的promise
       for (let i = 0; i < promisesLength; i++) {
-        // promises中元素可能不是一个数组, 需要用resolve包装一下
+        // promises中元素可能不是一个promise实例, 需要用resolve包装一下
         Promise.resolve(promises[i]).then(
           value => {
             // 成功当前promise成功的值到对应的下标
@@ -295,32 +295,65 @@ tags:
     );
   };
 
-    Promise.any = function(arr) {
-        try{
-            let a = [...arr]
-        }catch(err) {
-            throw new Error(err)
-        }
-        if(arr.length === 0) {
-            throw new AggregateError('all Promise are rejected')
-        }
-        let length = arr.length
-        let res = []
-        let index = 0
-        return new Promise((resolve, reject) => {
-            for(let i = 0; i < length; i++) {
-                Promise.resolve(arr[i]).then((val) => {
-                    resolve(val)
-                }).catch((err) => {
-                    index++ 
-                    res[i] = err
-                    if(length === index) {
-                        reject(new AggregateError(res))
-                    }
-                })
-            }
-        })
+  Promise.any = function(arr) {
+      try{
+          let a = [...arr]
+      }catch(err) {
+          throw new Error(err)
+      }
+      if(arr.length === 0) {
+          throw new AggregateError('all Promise are rejected')
+      }
+      let length = arr.length
+      let res = []
+      let index = 0
+      return new Promise((resolve, reject) => {
+          for(let i = 0; i < length; i++) {
+              Promise.resolve(arr[i]).then((val) => {
+                  resolve(val)
+              }).catch((err) => {
+                  index++ 
+                  res[i] = err
+                  if(length === index) {
+                      reject(new AggregateError(res))
+                  }
+              })
+          }
+      })
+  }
+
+  Promise.allSettled = function(arr) {
+    try {
+      let a = [...arr]
+    }catch(err) {
+      throw new Error(err)
     }
+    if(arr.length === 0) {
+      return Promise.resolve([])
+    }
+    let res = []
+    let index = 0
+    return new Promise((resolve, reject) => {
+      for(let i = 0; i< arr.length; i++) {
+        Promise.resolve(arr[i]).then(val => {
+          res[i] = {
+            status: 'fulfilled',
+            value: val
+          }
+        }).catch(err => {
+          res[i] = {
+            status: 'rejected',
+            value: err
+          }
+        }).finally(() => {
+          index++
+          if(index === arr.length) {
+            resolve(res)
+          }
+        })
+      }
+    })
+  }
 
   /*
     返回一个延迟指定时间才确定结果的promise对象
