@@ -8,49 +8,29 @@ categories:
 
 ##  函数节流
 ```js
-let flag = true;
-function throttle(func) {
-    if(typeof func !== 'function') return 
-    if(flag) {
-        flag = false;
-        func()
-        setTimeout(() => {
-            flag = true;
-        }, 5000)
+function throttle(fn, ms = 100) {
+  let throttleTimer = null;
+  return function (...args) {
+    if(!throttleTimer) {
+      const ret = fn.apply(this, args);
+      throttleTimer = setTimeout(() => {
+        throttleTimer = null;
+      }, ms);
+      return ret;
     }
-}
-throttle(() => {console.log('111')});
-
-// 高阶函数
-let throttle = function (fn, interval = 500, firstTime = true) {
-    let _self = fn,
-        timer,
-    return function () {
-        let _me = this;
-        if(firstTime) {
-            _self.apply(_me, arguments);
-            return firstTime = false;
-        }
-        if(timer) {
-            return false;
-        }
-        timer = setTimeout(() => {
-            clearTimeout(timer);
-            timer = null;
-            _self.apply(_me, arguments);
-        }, interval);
-    }
+  };
 }
 ```
 
 ##  函数防抖
 ```js
-let timer;
-function debounce(func) {
-    if(typeof func !== 'function') return 
-    timer && clearTimeout(timer);
-    timer = setTimeout(() => {
-        func();
-    }, 1000)
+function debounce(fn, ms = 100) {
+  let debounceTimer = null
+  return function(...args) {
+    debounceTimer && clearTimeout(debounceTimer)
+    debounceTimer = setTimeout(() => {
+      fn.apply(this, args)
+    }, ms)
+  }
 }
 ```

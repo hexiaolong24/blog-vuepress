@@ -9,7 +9,7 @@ categories:
 ##  实现一个带并发限制的promise异步调度器
 ```js
 class Scheduler {
-    constructor(name) {
+    constructor() {
         this.list = []
         this.max = 2
         this.current = 0

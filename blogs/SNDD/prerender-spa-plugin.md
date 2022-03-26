@@ -26,7 +26,7 @@ const resolvePath = (...args) => resolve(__dirname, '..', ...args);
 /**
  * 预渲染插件后续处理
  * 静态资源替换为cdn
- * https://jps04.cdnpalfish.com/international-activity/
+ * https://jps04.xxx.com/international-activity/
  */
 
 class HtmlFixPlugin {
@@ -43,7 +43,7 @@ class HtmlFixPlugin {
         const content = readFileSync(path).toString();
         let fixContent = content.replace(
           /http:\/\/localhost:8006\//g,
-          'https://jps04.cdnpalfish.com/international-activity/',
+          'https://jps04.xxx.com/international-activity/',
         );
 
         compilerFS.writeFile(path, fixContent, err => err && console.log(`[html-fix-plugin] ${path}\n ${err}`));
@@ -89,7 +89,7 @@ module.exports = function (config, preRenderPages = []) {
           ctx.html = ctx.html.replace(new RegExp(`<link[^>]+(${name}[^"]+|page-style[^"]+)[^>]+>`, 'g'), (_, find) => {
             const css = readFileSync(resolvePath(`build/static/css/${find}`))
               .toString()
-              .replace(/url\(\.\.\/\.\.\/static\//g, 'url(https://jps04.cdnpalfish.com/international-activity/static/');
+              .replace(/url\(\.\.\/\.\.\/static\//g, 'url(https://jps04.xxx.com/international-activity/static/');
             return ['<style>', css, '</style>'].join('');
           });
 

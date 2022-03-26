@@ -270,6 +270,14 @@ tags:
   返回一个 promise，一旦某个promise解决或拒绝， 返回的 promise就会解决或拒绝。
   */
   Promise.race = function (promises) {
+    try{
+      promises = [...promises]
+    }catch(err) {
+      throw err
+    }
+    if(promises.length === 0) {
+      return new Promise()
+    }
     // 返回新的promise对象
     return new Promise((resolve, reject) => {
       // 遍历所有promise

@@ -47,17 +47,29 @@ export function reduce(arr, callback, initValue){
     return result;
 }
 
-Array.prototype.myReduce = function(callback,initval) {
-  if(callback instanceof Function) {
-    let arr = this;
-    let result = initval ? initval ? arr[0]
-    for(let i = 0; i< arr.length; i++) {
-      result = callback(result,arr[i],arr)
-    }
-    return result
-  }else {
-    throw new Error(`${callback} is not a function`)
+Array.prototype.reduce = function(fn, initVal) {
+  let arr = this
+  if(arr.length === 0) {
+    throw new TypeError('empty array')
   }
+  if(typeof fn !== 'function') {
+    throw new TypeError(`${fn} is not a function`)
+  }
+  let curIndex, accVal
+  if(initVal) {
+    curIndex = 0
+    accVal = initVal
+  }else {
+    initVal = arr[0]
+    curIndex = 1
+  }
+  while(curIndex < arr.length) {
+    if(Object.prototype.hasOwnProperty.call(arr, curIndex)) {
+      accVal = fn(accVal, arr[curIndex], curIndex, arr)
+    }
+    curIndex++
+  }
+  return accVal
 }
 
 /**
