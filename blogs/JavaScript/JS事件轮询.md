@@ -113,6 +113,11 @@ Promise.resolve().then(() => {
 具体事件|1. script (可以理解为外层同步代码) <br/>2. setTimeout/setInterval <br/>3. UI rendering/UI事件 <br/>4. postMessage，MessageChannel<br/> 5. setImmediate，I/O（Node.js）6.ajax<br/> 7.DOM事件回调<br/>| 1. Promise <br/> 2. MutaionObserver<br/> 3. Object.observe（已废弃；Proxy 对象替代）<br/> 4. process.nextTick（Node.js）
 谁先运行|后运行|先运行
 
+##  会什么会区分宏任务和微任务
+
+- 事件循环由宏任务和在执行宏任务期间产生的所有微任务组成。完成当下的宏任务后，会立刻执行所有在此期间入队的微任务。
+- 这种设计是为了给紧急任务一个插队的机会，否则新入队的任务永远被放在队尾。区分了微任务和宏任务后，本轮循环中的微任务实际上就是在插队，这样微任务中所做的状态修改，在下一轮事件循环中也能得到同步。
+
 ##  node运行机制
 
 （1）V8引擎解析JavaScript脚本。
@@ -122,6 +127,8 @@ Promise.resolve().then(() => {
 （3）libuv库负责Node API的执行。它将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。
 
 （4）V8引擎再将结果返回给用户。
+
+六个宏任务按顺序依次执行，六个等级的宏任务全部执行完成，才是一轮循环，其中需要关注的是：Timers、Poll、Check阶段，因为我们所写的代码大多属于这三个阶段
 
 - timers: 执行setTimeout和setInterval的回调
 - pending callbacks: 执行延迟到下一个循环迭代的 I/O 回调
@@ -133,7 +140,7 @@ Promise.resolve().then(() => {
 
 ## process.nextTick
 
-- process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前。setImmediate方法则是在当前"任务队列"的尾部添加事件，也就是说，它指定的任务总是在下一次Event Loop时执行，这与setTimeout(fn, 0)很像。请看下面的例子（via StackOverflow）。
+- process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前。setImmediate方法则是在当前"任务队列"的尾部添加事件，也就是说，它指定的任务总是在下一次Event Loop时执行，在setTimeout(fn, 0)之后执行。
 
 ```js
 process.nextTick(function A() {
@@ -159,4 +166,56 @@ Promise.resolve().then(() => console.log(4));
 process.nextTick(() => console.log(3));
 
 // 3 4
+```
+
+##  node版本差异 11.x.x
+- node11.x 之前，先取出完一整个宏任务队列中全部任务，然后执行一个微任务队列。
+- 但在11.x 之后，node端的事件循环变得和浏览器类似：先执行一个宏任务，然后是一个微任务队列。但依然保留了宏任务队列和微任务队列的优先级。
+
+```js
+console.log('Script开始')
+setTimeout(() => {
+  console.log('宏任务1（setTimeout)')
+  Promise.resolve().then(() => {
+    console.log('微任务promise2')
+  })
+}, 0)
+setImmediate(() => {
+  console.log('宏任务2')
+})
+setTimeout(() => {
+  console.log('宏任务3（setTimeout)')
+}, 0)
+console.log('Script结束')
+Promise.resolve().then(() => {
+  console.log('微任务promise1')
+})
+process.nextTick(() => {
+  console.log('微任务nextTick')
+})
+// v 11.0.0 以上
+// Script开始
+// Script结束
+// 微任务nextTick
+// 微任务promise1
+// 宏任务1（setTimeout)
+
+// 执行完宏任务后如果出现了微任务则会优先执行微任务，与浏览器保持一致
+
+// 微任务promise2
+// 宏任务3（setTimeout)
+// 宏任务2
+
+// v 10.0.0
+// Script开始
+// Script结束
+// 微任务nextTick
+// 微任务promise1
+
+// 两个微任务结束之后依次执行了属于同一个宏任务的setTimeout 
+
+// 宏任务1（setTimeout)
+// 宏任务3（setTimeout)
+// 微任务promise2
+// 宏任务2
 ```

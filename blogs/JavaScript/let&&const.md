@@ -187,6 +187,46 @@ window.b // undefined
 ##  globalThis
 ES2020 在语言标准的层面，引入globalThis作为顶层对象。也就是说，任何环境下，globalThis都是存在的，都可以从它拿到顶层对象，指向全局环境下的this。
 
+##  es5模拟let const
+
+```js
+// let
+(() => {
+  var a = 1
+  console.log('a1', a)
+})()
+console.log('a2', a)
+
+// const
+function _const(key, value) {
+  window[key] = value
+  Object.defineProperty(window, key, {
+    configurable: false,
+    enumerable: false,
+    get() {
+      return value
+    },
+    set() {
+      throw new Error('Assignment to constant variable')
+    }
+  })
+}
+_const('num', 1)
+console.log(num)
+
+var a = Object.freeze({
+          name: 'aaa'
+        }) 
+let b = {
+  key: 123
+}
+Object.freeze(b)
+b.key = 3
+console.log(b.key)
+
+// 两种形式都可以，严格模式下报错，不是严格模式只是不生效
+```
+
 
 
 

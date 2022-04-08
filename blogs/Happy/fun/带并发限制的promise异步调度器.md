@@ -12,7 +12,6 @@ class Scheduler {
     constructor() {
         this.list = []
         this.max = 2
-        this.current = 0
     }
     add(func) {
         this.list.push(func)
@@ -23,12 +22,10 @@ class Scheduler {
         }
     }
     handler() {
-        if (!this.list.length || this.current > this.max) {
+        if (!this.list.length) {
             return
         }
-        this.current++
         this.list.shift()().then(() => {
-            this.current--
             this.handler()
         })
     }
@@ -51,7 +48,6 @@ scheduler.taskStart()
 ##  并发最多 max 次，全部执行完成后执行 callback，使用 fetch
 ```js
 function sendRequest(urls, max, callback) {
-    let current = 0
     let num = 0,
         allNum = urls.length
     for (let i = 0; i < max; i++) {
@@ -59,13 +55,10 @@ function sendRequest(urls, max, callback) {
     }
 
     function request() {
-        // debugger
-        if (current > max) {
+        if (!urls.length) {
             return
         }
-        current++
         fetch(urls.shift()).finally(() => {
-            current--
             num++
             if (num === allNum) {
                 callback()
@@ -87,70 +80,65 @@ let urls = [
 sendRequest(urls, 3, () => console.log('finally'))
 ```
 
-##  带并发限制的promise装饰器
+##  写一个 Promise.runLimit([p1, p2, p3, p4], limit) 方法 模拟 Promise.all 同时并行执行limit个数的promise 注意返回结果的顺序
 ```js
-class RequestDecorator {
-    constructor(max) {
-        this.maxCount = max
-        this.currentCount = 0
-        this.waitQueue = []
+Promise.myAll = function(promises, limit=2) {
+  try{
+    promises = [...promises]
+  }catch(e) {
+    throw new TypeError(e)
+  }
+
+  if(promises.length == 0) return Promise.resolve([]);
+
+  let len = promises.length,
+      res = new Array(len).fill(undefined),
+      max = limit,
+      count = 0;
+
+  function handle(resolve, reject, i) {
+    if(!promises.length) {
+      return 
     }
-    async request(caller) {
-        if (this.currentCount >= this.maxCount) {
-            // return new Promise((resolve, reject) => {}),结果取决于何时执行resolve
-            await this.wait()
-        }
-        try {
-            this.currentCount++
-            let res = await caller()
-            return Promise.resolve(res)
-        } catch (error) {
-            return Promise.reject(error)
-        } finally {
-            this.currentCount--
-            this.next()
-        }
+    Promise.resolve(promises.shift()())
+    .then(val => {
+      res[i] = val
+      handle(resolve, reject, count++)
+      if(res.filter(Boolean).length === len) {
+        resolve(res)
+      }
+    })
+    .catch(err => {
+      reject(err)
+    })
+    
+  }
+
+  return new Promise((resolve, reject) => {
+    for(let i = 0; i<max; i++) {
+      handle(resolve, reject, count++)
     }
-    next() {
-        if (this.waitQueue.length > 0) {
-            let _resolve = this.waitQueue.shift()
-            _resolve()
-        }
-    }
-    wait() {
-        let temResolve = null
-        let p = new Promise((resolve, reject) => temResolve = resolve)
-        this.waitQueue.push(temResolve)
-        return p
-    }
+  })
+  
 }
-
-let promiseAll = []
-
-let requestDecorator = new RequestDecorator(3)
-
-for (let i = 0; i < 10; i++) {
-    promiseAll.push(requestDecorator.request(
-        function () {
-            return new Promise(function (resolve, reject) {
-                let xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        console.log(i)
-                        resolve(xhr.responseText)
-                    }else {
-                        reject('err')
-                    }
-                }
-                xhr.open('GET', 'https://hacker-news.firebaseio.com/v0/topstories.json', true)
-                xhr.send();
-            })
-        }
-    ))
+const promise1 = function() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000, '1');
+  })
 }
-Promise.all(promiseAll).then((res) => {
-    console.log('promiseAllres====', res)
-}).catch((err) => {
-    console.log('promiseAllerr====', err)
+const promise2 = function() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 2000, '2');
+  })
+}
+const promise3 = function() {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, 2000, '3');
+  })
+}
+console.time()
+Promise.myAll([promise1, promise2, promise3]).then((val) => {
+  console.log('222', val)
+  console.timeEnd()
 })
 ```

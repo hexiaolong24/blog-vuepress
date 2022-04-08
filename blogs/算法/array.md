@@ -244,6 +244,73 @@ var findMedianSortedArrays = (nums1, nums2) => {
 }
 ```
 
+##  283 移动零
+- 双指针
+```js
+var moveZeroes = function(nums) {
+  let l = 0, r= -1;
+  while(r++ < nums.length) {
+    if(nums[r]) {
+      if(nums[l] === 0) {
+        [nums[l], nums[r]] = [nums[r], nums[l]]
+      }
+      l++
+    }
+  }
+  return nums
+};
+```
+- sort
+- 如果b=0 ，返回-1 排在最后面，
+```js
+var moveZeroes = function(nums) {
+    nums.sort((a, b) => b ? 0: -1)
+};
+```
+
+```js
+var moveZeroes = function(nums) {
+  nums.sort((a, b) => {
+    if(a === 0) {
+      return b ? 1: 0 
+    }else if(b === 0) {
+      return -1
+    }else {
+      return 0
+    }
+  })
+};
+```
+
+##  169 多数元素
+- 时间复杂度O(n)
+- 空间复杂度O(1)
+```js
+var majorityElement = function(nums) {
+  let res = 0
+  let count = 0
+  for(let item of nums){
+    if(count === 0) res = item
+    count += (res === item ? 1 : -1)
+  }
+  return res
+};
+```
+
+##  448 找到数组中所有消失的数字
+```js
+var findDisappearedNumbers = function(nums) {
+  // let arr = [...new Array(nums.length).keys()].map(item => item + 1)
+  let arr = Array.from({length: nums.length}, (_, i) => i+1)
+  let set = new Set(arr)
+  for(let item of nums) {
+    if(set.has(item)) {
+      set.delete(item)
+    }
+  }
+  return [...set]
+}
+```
 
 
 
