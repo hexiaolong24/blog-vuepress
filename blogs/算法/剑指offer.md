@@ -30,6 +30,18 @@ var myPow = function(x, n) {
         return res * res * x
     }
 };
+
+var myPow = function(x, n) {
+  if(n === 0) return 1
+  if(n === 1) return x
+  if(n === -1) return 1/x
+  let res = myPow(x, n >> 1)
+  res = res * res
+  if(n & 1) {
+    res = res * x
+  }
+  return res
+};
 ```
 
 ##  21 奇数排在偶数前面

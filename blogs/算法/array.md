@@ -312,6 +312,43 @@ var findDisappearedNumbers = function(nums) {
 }
 ```
 
+##  34 在排序数组中查找元素的第一个和最后一个位置
+- 二分查找
+```js
+var searchRange = function(nums, target) {
+  const find = (isLeft) => {
+    let start = 0
+    let end = nums.length - 1
+    while(start <= end) {
+      let mid = (start + end) >> 1
+        if(nums[mid] > target) {
+        end = mid - 1
+      }else if(nums[mid] < target){
+        start = mid + 1
+      }else {// 相等
+        if(isLeft) {
+          if(nums[mid] === nums[mid-1]) {
+            end = mid - 1
+          }else {
+            return mid
+          }
+        }else {
+          if(nums[mid] === nums[mid+1]) {
+            start = mid + 1
+          }else {
+            return mid
+          }
+        }
+      }
+    }
+    return -1
+  }
+  let left = find(true)
+  let right = find(false)
+  return [left, right]
+};
+```
+
 
 
 

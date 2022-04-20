@@ -219,3 +219,30 @@ process.nextTick(() => {
 // 微任务promise2
 // 宏任务2
 ```
+
+##  requestAnimationFrame setInterval
+- 同样都是执行90次（900px）
+- 但是 setInterval 会比 requestAnimationFrame 先到达，并且有明显卡顿
+- 分析：
+  - requestAnimationFrame执行90次说明是真的render了90次
+  - 但是setInterval90次不是每次render都执行，如果是那肯定和requestAnimationFrame是同时的
+  - 如第10次的render setInterval已经执行到第12次，此时width就会更大，所以会出现超前的现象，说明90次render中setInterval执行次数小于90，所以会出现卡顿（跳帧）
+```js
+setInterval(() => {
+  let ele = document.querySelector('.box')
+  if(ele.getBoundingClientRect().width < 1000) {
+  console.count('a====')
+    ele.style.width =  `${ele.getBoundingClientRect().width + 10}px`
+  }
+}, 16.7)
+
+let fn = () => {
+  let ele = document.querySelector('.box2')
+  if(ele.getBoundingClientRect().width < 1000) {
+  console.count('b====')
+    ele.style.width =  `${ele.getBoundingClientRect().width + 10}px`
+    requestAnimationFrame(fn)
+  }
+}
+requestAnimationFrame(fn)
+```
