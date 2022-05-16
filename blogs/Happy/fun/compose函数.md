@@ -23,8 +23,8 @@ function compose(...args) {
   }
   return function(...args1) {
     let index = length - 1
-    let res = length ? args[index].apply(this, args1) : args1[0]
-    while(index-- && length) {
+    let res = args[index].apply(this, args1)
+    while(index--) {
       res = args[index].call(this, res)
     }
     return res

@@ -404,7 +404,7 @@ p1.then(function (value) {
 上面代码中，thenable对象的then()方法执行后，对象p1的状态就变为resolved，从而立即执行最后那个then()方法指定的回调函数，输出42。
 还有一种情况是thenable会进入catch方法
 ```js
-// 会进入catch 但是直接Promise.reject() 不行会报错，直接Promise.resolve()也不会进入then,也不进入catch
+// 会进入catch 但是直接Promise.reject() 不可以，会报错，直接Promise.resolve()也不会进入then,也不进入catch
 let p1 = Promise.resolve({
     then: (resolve, reject) => {
         reject(1)

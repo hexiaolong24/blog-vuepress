@@ -186,7 +186,7 @@ module.exports = {
 
 - `optimize-css-assets-webpack-plugin`，直接调用一下就可以，压缩css
 
-- 生产环境下自动压缩js
+- 生产环境下自动压缩js(terserPlugin) 
 
 - `html-webpack-plugin`中配置，压缩html,去空格，去注释
 
@@ -347,6 +347,18 @@ module.exports = {
 - HMR `hot module replacement` 热模块替换 / 模块热替换,样式文件：可以使用HMR功能：因为`style-loader`内部实现了,js文件：默认不能使用HMR功能 --> 需要修改js代码，添加支持HMR功能的代码,在`devServer`中配置`hot:true`
 
 - source-map: 一种提供源代码到构建后代码映射技术,（如果构建后代码出错了，通过映射可以追踪源代码错误）
+  - source-map 外部 错误代码准确信息 和 源代码准确位置
+  - inline-source-map ：内联 构建速度快，只生成一个内联sourcemap文件 错误代码准确信息 和 源代码准确位置
+  - hidden-source-map: 外部 错误代码准确信息 但是没有错误位置 不能追踪到源代码位置 只能提示到构建后的位置
+  - eval-source-map: 内联 每一个文件都生成一个sourcemap文件  错误代码准确信息 和 源代码准确位置
+  - nosources-source-map 外部 错误代码准确信息 但是没有源代码信息
+  - cheap-source-map 外部 错误代码准确信息 和 源代码准确位置(只精确到行，整个一行都报错)
+  - cheap-module-source-map 外部 错误代码准确信息 和 源代码准确位置 会将loader 的source map加入进来
+
+开发环境：速度快 位置准确 eval-source-map(脚手架使用的是这个) / eval-cheap-source-map
+生产环境： 代码是否隐藏 调试要不要友好 
+  - 内联会使代码体积很大 生产环境使用外部 source-map nosources-source-map
+
 
 - oneOf中的loader只会匹配一个，不能有两个配置处理同一种类型文件
 
