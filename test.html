@@ -21,27 +21,33 @@
   <body>
     <div class="box"></div>
     <div class="box2"></div>
-<script>
-  function fn(s) {
-    const len = s.length
-    let dp = new Array(len).fill(0).map(() => new Array(len).fill(0))
-    for(let i = 0; i<len; i++) {
-        dp[i][i] = 1
-    }
-    for(let i = len; i>=0; i--) {
-        for(let j = i+1; j<len; j++) {
-            if(s[i] === s[j]) {
-                dp[i][j] = Math.max(dp[i+1][j-1] + 2)
-            }else {
-                dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j])
-            }
+    <script>
+      Promise.prototype.all = function (promises) {
+        try {
+          promises = [...promises];
+        } catch (err) {
+          throw new Error(err);
         }
-    }
-    return dp[0][len-1]
-}
-
-console.log(fn('abbba'))
-  
-</script>
-</body>
+        if (promises.length === 0) return Promise.resolve([]);
+        return new Promise((resolve, reject) => {
+          let count = 0,
+            length = promises.length,
+            res = new Array(length);
+          for (let i = 0; i < length; i++) {
+            Promise.resolve(promises[i])
+              .then((val) => {
+                count++;
+                res[i] = val;
+                if (count === length) {
+                  resolve(res);
+                }
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          }
+        });
+      };
+    </script>
+  </body>
 </html>
