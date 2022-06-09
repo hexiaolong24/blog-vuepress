@@ -21,33 +21,6 @@
   <body>
     <div class="box"></div>
     <div class="box2"></div>
-    <script>
-      Promise.prototype.all = function (promises) {
-        try {
-          promises = [...promises];
-        } catch (err) {
-          throw new Error(err);
-        }
-        if (promises.length === 0) return Promise.resolve([]);
-        return new Promise((resolve, reject) => {
-          let count = 0,
-            length = promises.length,
-            res = new Array(length);
-          for (let i = 0; i < length; i++) {
-            Promise.resolve(promises[i])
-              .then((val) => {
-                count++;
-                res[i] = val;
-                if (count === length) {
-                  resolve(res);
-                }
-              })
-              .catch((err) => {
-                reject(err);
-              });
-          }
-        });
-      };
-    </script>
+    <script></script>
   </body>
 </html>

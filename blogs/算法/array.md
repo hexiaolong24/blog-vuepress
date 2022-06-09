@@ -379,3 +379,34 @@ var searchRange = function (nums, target) {
   return [left, right];
 };
 ```
+
+## 215 数组中的第 K 大元素
+
+```js
+var findKthLargest = function (nums, k) {
+  nums = sortArray(nums);
+  console.log(nums);
+  return nums[nums.length - k];
+};
+var sortArray = function (nums) {
+  if (nums.length <= 1) {
+    return nums;
+  }
+  let index = parseInt(nums.length / 2),
+    // 要将flag 去除 splice会改变原数组
+    flag = nums.splice(index, 1),
+    left = [],
+    right = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > flag) {
+      right.push(nums[i]);
+    } else {
+      left.push(nums[i]);
+    }
+  }
+  left = sortArray(left);
+  right = sortArray(right);
+  // 注意合并中间项
+  return left.concat(flag, right);
+};
+```
