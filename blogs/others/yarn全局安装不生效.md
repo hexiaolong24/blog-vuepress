@@ -44,3 +44,7 @@ source ~/.bash_profile
 4.  重启终端查看是否生效
 
 ## 每次 git 操作需要输入密码
+
+1.  首先执行 ssh-add -L,控制台会显示 The agent has no identities.
+2.  再次执行 ssh-add，输入密码
+3.  之后就不需要再输入密码了
