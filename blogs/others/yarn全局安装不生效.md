@@ -8,6 +8,8 @@ tags:
   - 前端
 ---
 
+## yarn 全局安装不生效
+
 - yarn global add xxx
 - 仍提示 xxx not found
 
@@ -40,3 +42,5 @@ source ~/.bash_profile
 ```
 
 4.  重启终端查看是否生效
+
+## 每次 git 操作需要输入密码
