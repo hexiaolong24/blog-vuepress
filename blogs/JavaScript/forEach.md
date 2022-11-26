@@ -28,3 +28,18 @@ array.forEach((cur, index, arr) => {}, thisArg)
     -   Array.prototype.some()
     -   Array.prototype.find()
     -   Array.prototype.findIndex()
+
+##  for
+```js
+for(let i = 0; i< arr.length; i++) {
+  console.log(arr[i])
+}
+
+// 优化版
+// 使用临时变量，将长度缓存起来，避免重复获取数组长度，尤其是当数组长度较大时优化效果才会更加明显。
+var arr = [1,2,3,4,5]
+for(var i=0,len=arr.length;i<len;i++){
+  console.log(arr[i])
+}
+```
+- for-len > for > for-of > forEach > map > for-in
