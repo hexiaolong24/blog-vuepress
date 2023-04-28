@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+		<style>
+			.wrap {
+				overflow: hidden;
+			}
+			p {
+				color: #f55;
+				background: #fcc;
+				width: 200px;
+				line-height: 100px;
+				text-align: center;
+				margin: 100px;
+			}
+		</style>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .wrap {
-        overflow: hidden;
-    }
-    p {
-        color: #f55;
-        background: #fcc;
-        width: 200px;
-        line-height: 100px;
-        text-align:center;
-        margin: 100px;
-    }
-    </style>
-</head>
+	<body>
+		<script>
+			// 第一版;
+			// let num = 0;
+			// async function fn() {
+			// 	for (let i = 0; i < 5; i++) {
+			// 		console.log(i);
+			// 		await fn1(i);
+			// 	}
+			// }
 
-<body>
-    <script>
-        // 第一版
-        // let num = 0
-        // async function fn() {
-        //     for (let i = 0; i < 5; i++) {
-        //         console.log(i)
-        //         await fn1(i);
-        //     }
-        // }
+			// function fn1(i) {
+			// 	if (num > 5) {
+			// 		num = 0;
+			// 		return;
+			// 	}
+			// 	num++;
+			// 	console.log('======', i);
+			// 	return Promise.reject().catch(() => {
+			// 		fn1(i);
+			// 	});
+			// }
+			// fn();
 
-        // function fn1(i) {
-        //     if (num > 5) {
-        //         num = 0
-        //         return
-        //     }
-        //     num++
-        //     console.log('======', i)
-        //     return Promise.reject().catch(() => {
-        //         fn1(i)
-        //     })
-        // }
-        // fn()
+			// 第二版
+			// let num = 0;
+			// async function fn() {
+			// 	for (let i = 0; i < 5; i++) {
+			// 		console.log('for', i);
+			// 		await fn1(i);
+			// 	}
+			// }
 
-        // 第二版
-        // let num = 0
-        // async function fn() {
-        //     for (let i = 0; i < 5; i++) {
-        //         console.log('for', i)
-        //         await fn1(i);
-        //     }
-        // }
+			// function fn1(i) {
+			// 	if (num > 4) {
+			// 		num = 0;
+			// 		return;
+			// 	}
+			// 	num++;
+			// 	console.log('======', i);
+			// 	return Promise.reject().catch(() => {
+			// 		fn1(i);
+			// 		console.log('=======fn1()after=======');
+			// 		return Promise.reject();
+			// 	});
+			// }
+			// fn();
 
-        // function fn1(i) {
-        //     if (num > 4) {
-        //         num = 0
-        //         return
-        //     }
-        //     num++
-        //     console.log('======', i)
-        //     return Promise.reject().catch(() => {
-        //         fn1(i)
-        //         console.log('=======fn1()after=======')
-        //         return Promise.reject()
-        //     })
-        // }
-        // fn()
+			// 第三版
+			// async function fn() {
+			// 	for (let i = 0; i < 5; i++) {
+			// 		console.log('for', i);
+			// 		await fn1(i);
+			// 	}
+			// }
 
-        // 第三版
-        // async function fn() {
-        //     for (let i = 0; i < 5; i++) {
-        //         console.log('for', i)
-        //         await fn1(i);
-        //     }
-        // }
-
-        // function fn1(i) {
-        //     return new Promise(async (resolve, reject) => {
-        //         for (let j = 0; j < 5; j++) {
-        //             console.log('======', i)
-        //             await Promise.reject().catch(() => {
-        //                 console.log('=======fn1()after=======')
-        //             })
-        //         }
-        //         resolve()
-        //     })
-        // }
-        // fn()
-    </script>
-    <p>Haha</p>
-    <div class="wrap">
-        <p>Hehe</p>
-    </div>
-</body>
-
+			// function fn1(i) {
+			// 	return new Promise(async (resolve, reject) => {
+			// 		for (let j = 0; j < 5; j++) {
+			// 			console.log('======', i);
+			// 			await Promise.reject().catch(() => {
+			// 				console.log('=======fn1()after=======');
+			// 			});
+			// 		}
+			// 		resolve();
+			// 	});
+			// }
+			// fn();
+		</script>
+		<p>Haha</p>
+		<div class="wrap">
+			<p>Hehe</p>
+		</div>
+	</body>
 </html>
