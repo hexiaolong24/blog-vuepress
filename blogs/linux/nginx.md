@@ -334,6 +334,7 @@ systemctl start keepalived
 
 - 百度云申请免费证书 TrustAsia 域名型 DV 单域名测试版
 - 审核通过后 - 查看证书 - 下载证书（PEM 格式）
+- scp -r /Users/hexiaolong/Desktop/kobeforever24.cn.key root@47.93.125.189:/etc/pki/nginx
 - 登录服务器 ssh root@47.93.125.189
 - 查看 nginx 默认配置 /etc/nginx/nginx.conf
 - 替换 SSL 证书
