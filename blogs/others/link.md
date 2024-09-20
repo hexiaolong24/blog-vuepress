@@ -3,16 +3,16 @@ title: npm link
 date: 2021-02-22
 sidebar: 'auto'
 categories:
- - others
+  - others
 tags:
- - 前端
+  - 前端
 ---
 
 ### 组件库开发
 
--   各组件项目的入口文件引入了`dist/`目录文件，因此调试代码需要先执行`npm run build`进行编译。
+- 各组件项目的入口文件引入了`dist/`目录文件，因此调试代码需要先执行`npm run build`进行编译。
 
--   然后通过`npm link`的方式将安装在 node_modules 中的组件链接至本地项目。具体操作如下：
+- 然后通过`npm link`的方式将安装在 node_modules 中的组件链接至本地项目。具体操作如下：
 
 ```bash
 # 1. 通过 pwd 命令找到本地的组件目录，如：base-com 项目
@@ -30,4 +30,4 @@ ll node_modules/@xxx/
 base-com -> ../../../../../.nvm/versions/node/v10.19.0/lib/node_modules/@xxx/base-com
 ```
 
--   这样在每次修改代码以后，重新 build，对应的项目就可以自动更新依赖的代码了。
+- 这样在每次修改代码以后，重新 build，对应的项目就可以自动更新依赖的代码了。

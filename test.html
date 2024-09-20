@@ -2,128 +2,22 @@
 	<head>
 		<meta charset="utf-8" />
 		<style type="text/css">
-			nav {
-				margin: 100px auto;
-				text-align: center;
+			.wrap {
+				height: 100px;
+				/* display: inline-flex; */
+				display: flex;
 			}
-			nav ul {
-				border-radius: 10px;
-				background: linear-gradient(to bottom, #efefef, #bbbbbb);
-				padding: 0 20px;
-				display: inline-table;
-				position: relative;
-				box-shadow: 1px 1px 3px #666;
-				list-style: none;
-			}
-			nav ul ul {
-				display: none;
-				list-style: none;
-			}
-			nav ul div {
-				display: none;
-				list-style: none;
-			}
-			nav ul li {
-				float: left;
-				list-style: none;
+			.box {
+				width: 200px;
+				/* height: 100px; */
 				background-color: pink;
-			}
-			nav ul::after {
-				content: '';
-				display: block;
-				clear: both;
-				list-style: none;
-			}
-			nav ul li a {
-				display: block;
-				padding: 25px 40px;
-				color: #000;
-				text-decoration: none;
-				font-family: '微软雅黑';
-			}
-			nav ul li:hover > ul {
-				display: block;
-				list-style: none;
-			}
-			nav ul li:hover {
-				background: linear-gradient(to bottom, #4f5964, #5f6975);
-				list-style: none;
-			}
-			nav ul li:hover a {
-				color: #fff;
-			}
-			nav ul ul {
-				background: #5f6975;
-				border-radius: 0;
-				position: absolute;
-				top: 100%;
-				padding: 0;
-				list-style: none;
-			}
-			nav ul ul li {
-				float: none;
-				border-top: 1px solid #6b727c;
-				border-bottom: 1px solid #575f6a;
-				list-style: none;
-			}
-			nav ul ul li a {
-				color: #fff;
-			}
-			nav ul ul li a:hover {
-				background: #4b545f;
-			}
-			nav ul ul ul {
-				width: 100%;
-				position: absolute;
-				left: 100%;
-				top: 50%;
-				list-style: none;
 			}
 		</style>
 	</head>
 	<body>
-		<nav>
-			<ul>
-				<li>
-					<a href="#">导航一</a>
-					<div>
-						<div><a href="#">二级导航</a></div>
-					</div>
-				</li>
-				<li><a href="#">导航二</a></li>
-				<li>
-					<a href="#">导航三</a>
-					<ul>
-						<li><a href="#">二级导航</a></li>
-						<li><a href="#">二级导航</a></li>
-						<li>
-							<a href="#">二级导航</a>
-							<ul>
-								<li><a href="#">三级导航</a></li>
-								<li><a href="#">三级导航</a></li>
-								<li><a href="#">三级导航</a></li>
-							</ul>
-						</li>
-						<li><a href="#">二级导航</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">导航四</a>
-					<ul>
-						<li><a href="#">二级导航</a></li>
-						<li><a href="#">二级导航</a></li>
-						<li><a href="#">二级导航</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">导航五</a>
-					<ul>
-						<li><a href="#">二级导航</a></li>
-						<li><a href="#">二级导航</a></li>
-					</ul>
-				</li>
-				<li><a href="#">导航六</a></li>
-			</ul>
-		</nav>
+		<div class="wrap">
+			<div class="box">1</div>
+			<div class="box">2</div>
+		</div>
 	</body>
 </html>

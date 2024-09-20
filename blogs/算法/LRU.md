@@ -3,66 +3,68 @@ title: LRU
 date: 2020-08-09
 sidebar: 'auto'
 categories:
- - 算法
+  - 算法
 tags:
- - 算法
+  - 算法
 ---
 
-##  Map
--   利用map天然属性，遍历顺序就是插入顺序，（倒过来看就是lru）
+## Map
+
+- 利用 map 天然属性，遍历顺序就是插入顺序，（倒过来看就是 lru）
+
 ```js
 /**
  * @param {number} capacity
  */
-var LRUCache = function(capacity) {
-    this.stack = new Map();
-    this.capacity = capacity;
+var LRUCache = function (capacity) {
+	this.stack = new Map();
+	this.capacity = capacity;
 };
 
-/** 
+/**
  * @param {number} key
  * @return {number}
  */
-LRUCache.prototype.get = function(key) {
-    if(this.stack.has(key)){
-        // 有key 更新到第一位 删除由来的位置
-        const tem = this.stack.get(key);
-        this.stack.delete(key);
-        this.stack.set(key, tem);
-        return tem;
-    }else {
-        // 没有返回-1
-        return -1;
-    }
+LRUCache.prototype.get = function (key) {
+	if (this.stack.has(key)) {
+		// 有key 更新到第一位 删除原来的位置
+		const tem = this.stack.get(key);
+		this.stack.delete(key);
+		this.stack.set(key, tem);
+		return tem;
+	} else {
+		// 没有返回-1
+		return -1;
+	}
 };
 
-/** 
- * @param {number} key 
+/**
+ * @param {number} key
  * @param {number} value
  * @return {void}
  */
-LRUCache.prototype.put = function(key, value) {
-    if(this.stack.has(key)){
-        // 有更新为最新的，并且调整顺序
-        this.stack.delete(key);
-        this.stack.set(key, value)
-    }else if(this.stack.size < this.capacity){
-        // 没有 并且容量没有满，直接在最头部添加
-        this.stack.set(key, value)
-    }else {
-        // 没有，容量已满,删除第一个
-        this.stack.delete(this.stack.keys().next().value);
-        this.stack.set(key, value)
-    }
+LRUCache.prototype.put = function (key, value) {
+	if (this.stack.has(key)) {
+		// 有更新为最新的，并且调整顺序
+		this.stack.delete(key);
+		this.stack.set(key, value);
+	} else if (this.stack.size < this.capacity) {
+		// 没有 并且容量没有满，直接在最头部添加
+		this.stack.set(key, value);
+	} else {
+		// 没有，容量已满,删除第一个
+		this.stack.delete(this.stack.keys().next().value);
+		this.stack.set(key, value);
+	}
 };
 ```
 
+## 哈希双链表
 
-##  哈希双链表
 ```js
 class ListNode {
   constructor(key, value) {
-    this.key = key     
+    this.key = key
     this.value = value
     this.next = null
     this.prev = null
@@ -70,7 +72,7 @@ class ListNode {
 }
 
 class LRUCache {
-  constructor(capacity) {     
+  constructor(capacity) {
     this.capacity = capacity  // 缓存的容量
     this.hash = {}            // 哈希表
     this.count = 0            // 缓存数目
@@ -88,11 +90,11 @@ get(key) {
   return node.value              // 返回出节点值
 }
 
-moveToHead(node) {         
+moveToHead(node) {
   this.removeFromList(node) // 从链表中删除节点
   this.addToHead(node)      // 添加到链表的头部
 }
-removeFromList(node) {        
+removeFromList(node) {
   let temp1 = node.prev     // 暂存它的后继节点
   let temp2 = node.next     // 暂存它的前驱节点
   temp1.next = temp2        // 前驱节点的next指向后继节点

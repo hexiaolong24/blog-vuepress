@@ -11,19 +11,7 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<title>Document</title>
-		<style>
-			.wrap {
-				overflow: hidden;
-			}
-			p {
-				color: #f55;
-				background: #fcc;
-				width: 200px;
-				line-height: 100px;
-				text-align: center;
-				margin: 100px;
-			}
-		</style>
+		<style></style>
 	</head>
 
 	<body>
@@ -95,9 +83,17 @@
 			// }
 			// fn();
 		</script>
-		<p>Haha</p>
-		<div class="wrap">
-			<p>Hehe</p>
-		</div>
+		<script>
+			let list = [{ a: 1 }];
+			list.map((item) => {
+				// item.b = 2;
+				return {
+					b: 2,
+					...item,
+				};
+			});
+			console.log('======hxl======', list);
+		</script>
+		<div class="wrap"></div>
 	</body>
 </html>
