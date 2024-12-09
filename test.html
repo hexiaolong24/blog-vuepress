@@ -1,23 +1,31 @@
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<style type="text/css">
-			.wrap {
-				height: 100px;
-				/* display: inline-flex; */
-				display: flex;
-			}
-			.box {
-				width: 200px;
-				/* height: 100px; */
-				background-color: pink;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="wrap">
-			<div class="box">1</div>
-			<div class="box">2</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      .wrap {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+  <!-- <script src="./ts.js"></script> -->
+
+  <script>
+    function Child() {}
+    function Parent() {
+      this.a = 1;
+    }
+    // Child.prototype = new Parent();
+    Object.setPrototypeOf(Child.prototype, Parent.prototype);
+    console.log("============", Child.prototype);
+  </script>
 </html>

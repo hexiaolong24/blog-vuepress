@@ -1,43 +1,43 @@
 ---
 title: panda
 date: 2019-10-12
-sidebar: 'auto'
+sidebar: "auto"
 categories:
- - SNDD
+  - SNDD
 isShowComments: false
 keys:
- - '1360d01f3f0d562dc30b433a62443dcd'
+  - "1360d01f3f0d562dc30b433a62443dcd"
 ---
 
-##  概述
+## 概述
 
 - 熊猫养成是一个宠物养成类的成长项目，涉及熊猫的领养，做任务获得食物，不断升级的一个过程
 - 涉及到的状态有 普通、喂食、互动、睡觉、饥饿、出走
 - 不同的等级可以对应不同的形象，不同的形象又可以解锁不同的互动动作
 
-##  技术难点
+## 技术难点
 
-- 静态资源过多，包括图片、lottie动画文件等
-- 所有静态资源都统一放在一个assets.js文件中，所有资源全部都先上传cdn
-- 打包项目前先将所有资源下载下来，创建一个zip压缩包
+- 静态资源过多，包括图片、lottie 动画文件等
+- 所有静态资源都统一放在一个 assets.js 文件中，所有资源全部都先上传 cdn
+- 打包项目前先将所有资源下载下来，创建一个 zip 压缩包
 
 ```js
 // 下载所有url
-for (let i in assets){
-  execSync('curl -O ' + assets[i].url)
+for (let i in assets) {
+  execSync("curl -O " + assets[i].url);
 }
 // 把所有下载下来的文件组合成只有文件名的字符串参数
-let fileNameArr = []
-for (let i in assets){
-  fileNameArr.push(assets[i].url.substr(assets[i].url.lastIndexOf('/') + 1))
+let fileNameArr = [];
+for (let i in assets) {
+  fileNameArr.push(assets[i].url.substr(assets[i].url.lastIndexOf("/") + 1));
 }
-let fileString = Array.from(new Set(fileNameArr)).join(' ')
+let fileString = Array.from(new Set(fileNameArr)).join(" ");
 // 把下载下来的资源压缩成zip包
-let timeStr = new Date().getTime()
-execSync(`zip panda${timeStr}.zip ${fileString}`)
+let timeStr = new Date().getTime();
+execSync(`zip panda${timeStr}.zip ${fileString}`);
 ```
 
-- loading页加载的时候先解压，然后将所有的url创建一个blob链接
+- loading 页加载的时候先解压，然后将所有的 url 创建一个 blob 链接
 
 ```js
 import zip from 'jszip'
@@ -50,7 +50,6 @@ loadFiles(){
   }).then(res => {
     let url = res.data.data.url
     let reg = url.match(/panda\w{0,13}\.\w{0,3}/)[0].replace('7z','zip')
-
     // 获取zip包并解压
     let zipFile = new zip.external.Promise((resolve, reject) => {
       utils.getBinaryContent(`/h5-game/${reg}`, (err,data) => {
@@ -59,7 +58,6 @@ loadFiles(){
     }).then(res => {
       return zip.loadAsync(res)
     })
-
     //获取解压后的流
     zipFile.then(async res => {
       let AsyncFiles = {}
@@ -96,7 +94,7 @@ loadFiles(){
 },
 ```
 
-- 不同形象对应的资源先依赖当前熊猫的形象等级来匹配，首先先判断当前熊猫的等级，形象等级，判断当前的状态，首先是如果上一次喂食时间超过7天就是出走，超过3天就是饥饿，然后就是按照当前时间，判断是睡觉还是正常状态，直接对应接下来的动作，不同形象的动作位置大小也是不同的，也是提前分形象创建各自的位置文件，直接匹配
+- 不同形象对应的资源先依赖当前熊猫的形象等级来匹配，首先先判断当前熊猫的等级，形象等级，判断当前的状态，首先是如果上一次喂食时间超过 7 天就是出走，超过 3 天就是饥饿，然后就是按照当前时间，判断是睡觉还是正常状态，直接对应接下来的动作，不同形象的动作位置大小也是不同的，也是提前分形象创建各自的位置文件，直接匹配
 
 ```js
 matchAppearanceGrade(key) {
@@ -111,7 +109,7 @@ matchAppearanceGrade(key) {
     case 1:
       this.currentConfigAssets = one;
       this.bubbleStyle.bottom = this.isIpad ? '2.12rem' : '2.52rem';
-      return 
+      return
     case 2:
       this.currentConfigAssets = two;
       this.bubbleStyle.bottom = this.isIpad ? '2.28rem' : '2.68rem';
@@ -171,4 +169,4 @@ async confirmPandaUpgrade() {
 },
 ```
 
-- ui组件全部抽离，依赖vuex获得熊猫具体信息，任务奖励、档案、等级进度、云雾转场、气泡提示等等
+- ui 组件全部抽离，依赖 vuex 获得熊猫具体信息，任务奖励、档案、等级进度、云雾转场、气泡提示等等

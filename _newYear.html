@@ -1,367 +1,40 @@
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
-		<meta
-			name="description"
-			content="CamIn is an easy-to-use video recording tool. CamIn supports you to record yourself, your screens/PPT/PDF/Images, or both simultaneously. It can also enhance your video calls and conferences or online teaching as a virtual camera witch Touch up, stickers, high definition background images and 3D avatar. It is primarily designed for remote workers, educators, and anyone who needs to communicate complex ideas through videos."
-		/>
-		<meta
-			property="og:title"
-			content="CamIn | Video Recording & Virtual Webcam Software"
-		/>
-		<title>CamIn | Video Recording & Virtual Webcam Software</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 300px;
+        height: 300px;
+        border: 1px solid skyblue;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        /* justify-content: space-between; */
+        align-content: space-between;
+      }
 
-	<body>
-		<div
-			style="
-				width: 600px;
-				height: 1250px;
-				background-color: #fffbf8;
-				margin: 0 auto;
-				position: relative;
-			"
-		>
-			<img
-				src="https://static.camin.net/pub/op/20231219/bg-1.png"
-				style="width: 100%; height: 165px"
-			/>
-			<img
-				src="https://static.camin.net/pub/op/20231219/logo.png"
-				style="width: 80px; height: 20px; margin: 6px auto 0 37px"
-			/>
-			<img
-				src="https://static.camin.net/pub/op/20231219/christmas.png"
-				style="width: 206px; margin: 17px auto 0; display: block"
-			/>
-			<img
-				src="https://static.camin.net/pub/op/20231219/bigsale.png"
-				style="width: 446px; margin: 12px auto 0; display: block"
-			/>
-			<div
-				style="
-					color: #000;
-					text-align: center;
-					font-family: Poppins;
-					font-size: 30px;
-					font-style: normal;
-					font-weight: 600;
-					line-height: 32px;
-					letter-spacing: 0.15px;
-					margin: 50px 0 30px;
-				"
-			>
-				50% OFF ALL PLANS
-			</div>
-			<div
-				style="
-					font-size: 14px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 24px;
-					letter-spacing: 0.07px;
-					text-align: center;
-				"
-			>
-				Don't miss your chance to save in our biggest sale!
-			</div>
-			<div
-				style="
-					font-size: 14px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 24px;
-					letter-spacing: 0.07px;
-					text-align: center;
-					text-decoration: underline;
-				"
-			>
-				Get 50% off today!
-			</div>
-			<div style="width: 100%; text-align: center; margin: 20px auto">
-				<span
-					style="
-						color: #7b7b7b;
-						font-family: Poppins;
-						font-size: 15px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: 32px;
-						letter-spacing: 0.075px;
-						text-decoration: line-through;
-						margin-right: 10px;
-						display: inline-block;
-					"
-					>$8</span
-				>
-				<span
-					style="
-						color: #000;
-						font-family: Poppins;
-						font-size: 20px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: 32px;
-						letter-spacing: 0.1px;
-					"
-					>$<span style="font-size: 35px">3.3</span>/mo</span
-				>
-			</div>
-			<div
-				style="
-					width: 190px;
-					height: 45px;
-					border-radius: 4px;
-					background: #d00000;
-					color: #fff;
-					font-family: Poppins;
-					font-size: 25px;
-					font-style: normal;
-					font-weight: 600;
-					line-height: 45px;
-					letter-spacing: 0.125px;
-					text-align: center;
-					margin: 0 auto;
-				"
-			>
-				<a
-					style="
-						width: 190px;
-						height: 45px;
-						color: #fff !important;
-						font-family: Poppins;
-						font-size: 25px;
-						display: inline-block;
-						border: none;
-					"
-					href="https://www.camin.net/pricing"
-					target="_blank"
-					>Get Pro Now</a
-				>
-			</div>
-			<img
-				style="
-					width: 240px;
-					height: 40px;
-					margin: 40px auto 30px;
-					display: block;
-				"
-				src="https://static.camin.net/pub/op/20231219/divider.png"
-			/>
-			<div
-				style="
-					padding: 0 24px;
-					width: 100%;
-					display: flex;
-					box-sizing: border-box;
-				"
-			>
-				<img
-					style="width: 256px; height: 139px"
-					src="https://static.camin.net/pub/op/20231219/frame.png"
-				/>
-				<div>
-					<div
-						style="
-							color: #000;
-							font-family: Poppins;
-							font-size: 25px;
-							font-style: normal;
-							font-weight: 500;
-							line-height: 32px;
-							letter-spacing: 0.125px;
-							padding-left: 18px;
-						"
-					>
-						Why CamIn
-					</div>
-					<ul>
-						<li
-							style="
-								color: #727272;
-								font-family: Poppins;
-								white-space: nowrap;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 400;
-								letter-spacing: 0.075px;
-							"
-						>
-							Picture-in-Picture Video Recording
-						</li>
-						<li
-							style="
-								color: #727272;
-								font-family: Poppins;
-								white-space: nowrap;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 400;
-								letter-spacing: 0.075px;
-							"
-						>
-							Virtual Camera
-						</li>
-						<li
-							style="
-								color: #727272;
-								font-family: Poppins;
-								white-space: nowrap;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 400;
-								letter-spacing: 0.075px;
-							"
-						>
-							Live Streaming
-						</li>
-						<li
-							style="
-								color: #727272;
-								font-family: Poppins;
-								white-space: nowrap;
-								font-size: 15px;
-								font-style: normal;
-								font-weight: 400;
-								letter-spacing: 0.075px;
-							"
-						>
-							Password Protected Sharing
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div
-				style="
-					width: 520px;
-					height: 1px;
-					background-color: #ffefe2;
-					margin: 60px auto 38px;
-				"
-			></div>
-			<div style="display: flex">
-				<div style="margin: 0 auto">
-					<div
-						style="
-							width: 36px;
-							height: 36px;
-							margin-right: 2px;
-							display: inline-block;
-						"
-					>
-						<a
-							style="
-								width: 36px;
-								height: 36px;
-								display: inline-block;
-								border: none;
-							"
-							href="https://discord.com/invite/2uDpJpnPqa"
-							target="_blank"
-							><img
-								style="width: 36px; height: 36px; pointer-events: none"
-								src="https://static.camin.net/pub/op/20231219/dis.png"
-						/></a>
-					</div>
-					<div
-						style="
-							width: 36px;
-							height: 36px;
-							margin-right: 2px;
-							display: inline-block;
-						"
-					>
-						<a
-							style="
-								width: 36px;
-								height: 36px;
-								display: inline-block;
-								border: none;
-							"
-							href="https://www.tiktok.com/@caminapp?is_from_webapp=1&sender_device=pc"
-							target="_blank"
-							><img
-								style="width: 36px; height: 36px; pointer-events: none"
-								src="https://static.camin.net/pub/op/20231219/tt.png"
-						/></a>
-					</div>
-					<div
-						style="
-							width: 36px;
-							height: 36px;
-							margin-right: 2px;
-							display: inline-block;
-						"
-					>
-						<a
-							style="
-								width: 36px;
-								height: 36px;
-								display: inline-block;
-								border: none;
-							"
-							href="https://www.youtube.com/channel/UC8KU2JR875228qiWL-mXymw"
-							target="_blank"
-							><img
-								style="width: 36px; height: 36px; pointer-events: none"
-								src="https://static.camin.net/pub/op/20231219/youtube.png"
-						/></a>
-					</div>
-					<div
-						style="
-							width: 36px;
-							height: 36px;
-							margin-right: 2px;
-							display: inline-block;
-						"
-					>
-						<a
-							style="
-								width: 36px;
-								height: 36px;
-								display: inline-block;
-								border: none;
-							"
-							href="https://www.facebook.com/eeocamin"
-							target="_blank"
-							><img
-								style="width: 36px; height: 36px; pointer-events: none"
-								src="https://static.camin.net/pub/op/20231219/facebook.png"
-						/></a>
-					</div>
-					<div
-						style="
-							width: 36px;
-							height: 36px;
-							margin-right: 2px;
-							display: inline-block;
-						"
-					>
-						<a
-							style="
-								width: 36px;
-								height: 36px;
-								display: inline-block;
-								border: none;
-							"
-							href="https://twitter.com/eeocamin"
-							target="_blank"
-							><img
-								style="width: 36px; height: 36px; pointer-events: none"
-								src="https://static.camin.net/pub/op/20231219/tw.png"
-						/></a>
-					</div>
-				</div>
-			</div>
-			<img
-				style="height: 218px"
-				src="https://static.camin.net/pub/op/20231219/bg-2.png"
-			/>
-		</div>
-	</body>
+      .wrap > div {
+        width: calc((100% - 10px * 2) / 3);
+        aspect-ratio: 1;
+        background: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <!-- <div></div> -->
+      <!-- <div></div> -->
+    </div>
+  </body>
 </html>

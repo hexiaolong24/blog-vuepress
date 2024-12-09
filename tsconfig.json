@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es2015", // 指定 ECMAScript 目标版本
+    "lib": ["es2015", "dom"], // 添加所需的库
+    "strict": true, // 启用严格类型检查
+    "esModuleInterop": true, // 使 CommonJS 模块可以正确导入
+    "skipLibCheck": true // 跳过库文件的类型检查
+  },
+  "include": ["*.ts"] // 包含所有 TypeScript 文件
+}

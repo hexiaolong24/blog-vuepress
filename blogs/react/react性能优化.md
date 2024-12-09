@@ -94,7 +94,7 @@ export default function App() {
 
 ## useMemo 和 useCallback
 
-> 生效的前提是接受组件是钱比较
+> 生效的前提是接受组件是浅比较
 
 - 缓存变量传给子组件
 

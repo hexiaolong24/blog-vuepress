@@ -68,24 +68,24 @@ let difference = Array.from(new Set([...a].filter((x) => !b.has(x))));
 - Set 的键名和键值是一个值
 
 ```js
-let set = new Set(['red', 'green', 'blue']);
+let set = new Set(["red", "green", "blue"]);
 
 for (let item of set.keys()) {
-	console.log(item);
+  console.log(item);
 }
 // red
 // green
 // blue
 
 for (let item of set.values()) {
-	console.log(item);
+  console.log(item);
 }
 // red
 // green
 // blue
 
 for (let item of set.entries()) {
-	console.log(item);
+  console.log(item);
 }
 // ["red", "red"]
 // ["green", "green"]
@@ -107,9 +107,9 @@ Map.prototype[Symbol.iterator] === Map.prototype.keys; // false
 
 Map.prototype[Symbol.iterator] === Map.prototype.values; // false
 
-let set = new Set(['red', 'green', 'blue']);
+let set = new Set(["red", "green", "blue"]);
 for (let x of set) {
-	console.log(x);
+  console.log(x);
 }
 // red
 // green
@@ -120,7 +120,7 @@ for (let x of set) {
 
 ```js
 let set = new Set([1, 4, 9]);
-set.forEach((value, key) => console.log(key + ' : ' + value));
+set.forEach((value, key) => console.log(key + " : " + value));
 // 1 : 1
 // 4 : 4
 // 9 : 9
@@ -162,8 +162,8 @@ set.forEach((value, key) => console.log(key + ' : ' + value));
 
 ```js
 const items = [
-	['name', '张三'],
-	['title', 'Author'],
+  ["name", "张三"],
+  ["title", "Author"],
 ];
 
 const map = new Map();
@@ -182,6 +182,36 @@ items.forEach(([key, value]) => map.set(key, value));
 
 Map 的遍历顺序就是插入顺序。
 
+### map 的序列化
+
+使用 JSON.stringify() 及其 replacer 参数和 JSON.parse() 及其 reviver 参数来为 Map 构建自己的序列化和解析支持
+
+```js
+function replacer(key, value) {
+  if (value instanceof Map) {
+    return {
+      dataType: "Map",
+      value: [...value],
+    };
+  } else {
+    return value;
+  }
+}
+
+function reviver(key, value) {
+  if (typeof value === "object" && value !== null) {
+    if (value.dataType === "Map") {
+      return new Map(value.value);
+    }
+  }
+  return value;
+}
+
+const originalValue = new Map([["a", 1]]);
+const str = JSON.stringify(originalValue, replacer);
+const newValue = JSON.parse(str, reviver);
+```
+
 ## WeakMap
 
 - 只接受对象做为键名（null 除外）
@@ -199,7 +229,7 @@ let wr = new WeakRef(target);
 
 let obj = wr.deref();
 if (obj) {
-	// target 未被垃圾回收机制清除
-	// ...
+  // target 未被垃圾回收机制清除
+  // ...
 }
 ```

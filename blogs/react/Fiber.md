@@ -13,6 +13,7 @@ tags:
 > Fiber 并不是计算机术语中的新名词，他的中文翻译叫做纤程，与进程（Process）、线程（Thread）、协程（Coroutine）同为程序执行过程。在很多文章中将纤程理解为协程的一种实现。在 JS 中，协程的实现便是 Generator。所以，我们可以将纤程(Fiber)、协程(Generator)理解为代数效应思想在 JS 中的体现。
 > React Fiber (虚拟 DOM)可以理解为：
 > React 内部实现的一套状态更新机制。支持任务不同优先级，可中断与恢复，并且恢复后可以复用之前的中间状态。
+> 是一个最小工作单元
 
 ## Fiber 的含义
 
@@ -40,22 +41,24 @@ this.elementType = null;
 this.type = null;
 // Fiber对应的真实DOM节点
 this.stateNode = null;
+// ref相关
+this.ref = null;
 ```
 
 3.  作为动态的工作单元来说，每个 Fiber 节点保存了本次更新中该组件改变的状态、要执行的工作（需要被删除/被插入页面中/被更新...）
 
 ```js
-/ 保存本次更新造成的状态改变相关信息
+// 保存本次更新造成的状态改变相关信息
 this.pendingProps = pendingProps;
 this.memoizedProps = null;
-this.updateQueue = null;
-this.memoizedState = null;
+this.updateQueue = null; // 存储update的链表
+this.memoizedState = null; // 类组件存储fiber的状态，函数组件存储hooks链表
 this.dependencies = null;
 
 this.mode = mode;
 
-// 保存本次更新会造成的DOM操作
-this.effectTag = NoEffect;
+// flags原为effectTag，表示当前这个fiber节点变化的类型：增、删、改
+this.flags = NoEffect;
 this.nextEffect = null;
 
 this.firstEffect = null;
@@ -65,7 +68,9 @@ this.lastEffect = null;
 ## 优先级调度相关
 
 ```js
+// 该fiber中的优先级，它可以判断当前节点是否需要更新
 this.lanes = NoLanes;
+// 子树中的优先级，它可以判断当前节点的子树是否需要更新
 this.childLanes = NoLanes;
 ```
 
@@ -76,9 +81,51 @@ this.childLanes = NoLanes;
 - current Fiber 树中的 Fiber 节点被称为 current fiber，workInProgress Fiber 树中的 Fiber 节点被称为 workInProgress fiber，他们通过 alternate 属性连接
 
 ```js
+/*
+ * 可以看成是workInProgress（或current）树中的和它一样的节点，
+ * 可以通过这个字段是否为null判断当前这个fiber处在更新还是创建过程
+ * */
+this.alternate = null;
+
 currentFiber.alternate === workInProgressFiber;
 workInProgressFiber.alternate === currentFiber;
 ```
+
+## 两个阶段
+
+- render 新 fiber 树的构建
+  render 阶段实际上是在内存中构建一棵新的 fiber 树（称为 workInProgress 树），构建过程是依照现有 fiber 树（current 树）从 root 开始深度优先遍历再回溯到 root 的过程
+
+  - beginWork
+
+    - 组件的状态计算
+    - diff
+    - render 函数的执行
+
+  - completeWork
+    - 真实 DOM 节点的创建以及挂载（？）
+    - DOM 属性的处理
+    - effect 链表的收集 单向链表
+    - 被跳过的优先级的收集
+    - 错误处理
+
+- commit 更新最终效果的应用
+
+### beginWork
+
+1.  首先判断节点及其子树是否有更新
+2.  若有更新会在计算新状态和 diff 之后生成新的 Fiber
+3.  然后在新的 fiber 上标记 flags（effectTag）
+4.  最后 return 它的子节点以便继续针对子节点进行 beginWork。若它没有子节点，则返回 null，这样说明这个节点是末端节点，可以进行向上回溯，进入 completeWork 阶段。
+
+- 复用节点
+  如果无需处理，则调用 bailoutOnAlreadyFinishedWork 复用节点
+  beginWork 它的返回值有两种情况：
+
+返回当前节点的子节点，然后会以该子节点作为下一个工作单元继续 beginWork，不断往下生成 fiber 节点，构建 workInProgress 树。
+返回 null，当前 fiber 子树的遍历就此终止，从当前 fiber 节点开始往回进行 completeWork。
+
+bailoutOnAlreadyFinishedWork 函数的返回值也是如此。
 
 ## Reconciler (render 阶段) 异步可中断
 
@@ -224,5 +271,23 @@ export const Deletion = /*                 */ 0b00000000001000;
 
 ## useEffect 和 useLayoutEffect
 
-- useLayoutEffect 在 layout 阶段后同步执行
+- useLayoutEffect 在 layout 阶段 dom 准备之后，已更新但是并未渲染完成，会阻塞浏览器渲染
 - 而 useEffect 则需要先调度，在 Layout 阶段完成后再异步执行
+
+## Scheduler 的作用
+
+- Scheduler 用来调度执行上面提到的 React 任务。
+- 何为调度？依据任务优先级来决定哪个任务先被执行。调度的目标是保证高优先级任务最先被执行。
+- 何为执行？Scheduler 执行任务具备一个特点：即根据时间片去终止任务，并判断任务是否完成，若未完成则继续调用任务函数。它只是去做任务的中断和恢复，而任务是否已经完成则要依赖 React 告诉它。Scheduler 和 React 相互配合的模式可以让 React 的任务执行具备异步可中断的特点。
+
+## 双缓冲机制
+
+当 React 开始更新工作之后，会有两个 fiber 树，一个 current 树，是当前显示在页面上内容对应的 fiber 树。另一个是 workInProgress 树，它是依据 current 树深度优先遍历构建出来的新的 fiber 树，所有的更新最终都会体现在 workInProgress 树上。当更新未完成的时候，页面上始终展示 current 树对应的内容，当更新结束时（commit 阶段的最后），页面内容对应的 fiber 树会由 current 树切换到 workInProgress 树，此时 workInProgress 树即成为新的 current 树。
+
+## 题目
+
+1.  如何区分更新与初始化过程
+    判断 current === null
+
+- true 初始化
+- false 更新

@@ -1,30 +1,31 @@
-let arr = [
-  {id: 1, name: '部门1', pid: 0},
-  {id: 2, name: '部门2', pid: 1},
-  {id: 3, name: '部门3', pid: 1},
-  {id: 4, name: '部门4', pid: 3},
-  {id: 5, name: '部门5', pid: 4},
-]
-
-function arrayToTree(items) {
-  const result = [];   
-  const itemMap = {};   
-  for (const item of items) {
-    const id = item.id
-    const pid = item.pid
-    itemMap[id] = {
-      ...item,
-      child: []
+export class IntensitySegments {
+    constructor() {
+        this.segments = new Map();
     }
-    const treeItem = itemMap[id]
-    if(pid === 0) {
-      result.push(treeItem)
-    }else {
-      if(itemMap[pid]) {
-        itemMap[pid].child.push(treeItem)
-      }
+    add(from, to, amount) {
+        this.segments.set(from, (this.segments.get(from) || 0) + amount);
+        this.segments.set(to, (this.segments.get(to) || 0) - amount);
     }
-  }
-  return result;
+    _buildSegments() {
+        const keys = Array.from(this.segments.keys()).sort((a, b) => a - b);
+        let currentIntensity = 0;
+        const result = [];
+        let firstNonZeroAdded = false;
+        for (const key of keys) {
+            currentIntensity += this.segments.get(key);
+            if (currentIntensity !== 0 || firstNonZeroAdded) {
+                result.push([key, currentIntensity]);
+                firstNonZeroAdded = true;
+            }
+        }
+        while (result.length > 1 &&
+            result[result.length - 1][1] === 0 &&
+            result[result.length - 2][1] === 0) {
+            result.pop();
+        }
+        return result;
+    }
+    toString() {
+        return JSON.stringify(this._buildSegments());
+    }
 }
-console.log(arrayToTree(arr))
