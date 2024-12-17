@@ -20,12 +20,11 @@
   <!-- <script src="./ts.js"></script> -->
 
   <script>
-    function Child() {}
-    function Parent() {
-      this.a = 1;
+    console.log('=====hxl=====', 111)
+    const str = ' '
+    for(let key in str) {
+      console.log('=====hxl=====', key)
     }
-    // Child.prototype = new Parent();
-    Object.setPrototypeOf(Child.prototype, Parent.prototype);
-    console.log("============", Child.prototype);
+    JSON.stringify
   </script>
 </html>
