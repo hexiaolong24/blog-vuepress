@@ -19,12 +19,12 @@
   </body>
   <!-- <script src="./ts.js"></script> -->
 
-  <script>
-    console.log('=====hxl=====', 111)
-    const str = ' '
-    for(let key in str) {
-      console.log('=====hxl=====', key)
-    }
-    JSON.stringify
+  <script type="module">
+    import('./error.js').then(
+      console.log('=====hxl=====', 222)
+    ).catch(
+      console.log('=====hxl=====', 333)
+    )
+   
   </script>
 </html>
